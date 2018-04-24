@@ -29,7 +29,8 @@ saya mengambil folder structure sama seperti tema bawaan wp yang terakhir saat i
   - `header.php` file
   - `index.php` file
   - `screenshot.png` file
-  - `style.css` file
+  - `style.css` file  
+  
 Make Blank Theme  
 `header.php` `<?php get_header(); ?>`  
 `footer.php` `<?php get_footer(); ?>`  
