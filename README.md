@@ -91,10 +91,49 @@ function sunset_theme_create_page()
 ```
 untuk icon kita bisa memakai gambar `.png` ukuran kecil atau bisa juga menggunakan font `Dashicon` copy namanya dan paste di param `$icon_menu` misal `dashicons-art`
 
+### 3. How to create Admin SubPages
 
+Untuk membuat `subpage` tambahkan function `add_submenu_page()` dalam function `sunset_add_admin_page()`
+```php
+add_submenu_page( 'mhgufron_sunset', 'Sunset Theme Option', 'General', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page' );
+```
+function submenu diatas memiliki slug dan function yang sama denga parent sehingga akan menimpa submenu bawaan parentnya
 
+Buat 1 lagi submenu
+```php
+add_submenu_page( 'mhgufron_sunset', 'Sunset CSS Option', 'Custom CSS', 'manage_options', 'mhgufron_sunset_css', 'sunset_theme_settings_page' );
+```
 
+Jangan lupa buat function yang dipakai submenu dan tuliskan beberapa kode untuk di tampilkan di panel menu
+```php
+function sunset_theme_create_page()
+{
+    echo "<h1>Sunset Theme Option</h1>";
+}
 
+function sunset_theme_settings_page()
+{
+    echo "<h1>Sunset Custom CSS</h1>";
+}
+```
+Jika kita menuliskan semua kode html di dalam fungsi seperti diatas akan sulin untuk mencari error dan terlalu banyak baris yang di gunakan maka kita bisa memisahkan perpanel jadi kita hanya menginclude file saja di dalam function.
+
+Buat file di `/inc/templates/` dengan nama `sunset-admin.php`
+```php
+<h1>Sunset Theme Option</h1>
+<h3 class="title">Manage Options</h3>
+<p>Customize the default Wordpress Appearance Options</p>
+<?php bloginfo( 'name' ); ?>
+
+```
+
+require file `function-admin.php`
+```php
+function sunset_theme_create_page()
+{
+    require_once get_template_directory() . '/inc/function-admin.php';
+}
+```
 
 
 
