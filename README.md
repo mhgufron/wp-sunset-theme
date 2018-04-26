@@ -135,6 +135,83 @@ function sunset_theme_create_page()
 }
 ```
 
+### 4. Create Custom Options with Settings API
+
+Tambahkan `add_action()` di fungsi `sunset_add_admin_page()`
+```php
+// Activate custom settings
+add_action( 'admin_init', 'sunset_custom_settings');
+```
+
+Buat function `sunset_custom_settings` dan tambahkan function `register_setting()`
+```php
+function sunset_custom_settings()
+{
+    register_setting( 'sunset-settings-group', 'first_name');
+}
+```
+
+Buat form input di `sunset-admin.php` replace dengan kode dibawah
+```php
+<h1>Sunset Theme Option</h1>
+<h3 class="title">Manage Options</h3>
+<p>Customize Sidebar Option</p>
+
+<form action="" method="post">
+    <?php settings_fields( 'sunset-settings-group' ) ?>
+</form>
+```
+
+Tambahkan fungsi `add_settings_section()` dalam function `sunset_custom_settings()`
+add_settings_section($param_1, $param_2, $param_3, $param_4, $param_5)
+`$param_1` id dari settings section
+`$param_2` judul dari section
+`$param_3` function yang dipanggil di section
+`$param_4` id page dimana section ini akan ditampilkan
+```php
+add_settings_section( 'sunset-sidebar-options', 'Sidebar Options', 'sunset_sidebar_options', 'mhgufron_sunset' );
+```
+
+Buat function `sunset_sidebar_options()`
+```php
+function sunset_sidebar_options()
+{
+    echo "Customize your Sidebar Information";
+}
+```
+
+Tambahkan fungsi `do_settings_sections()` di `sunset-admin.php` dengan parameter `nama section` dan fungsi `submit_button()` replace `sunset-admin.php` dengan kode dibawah
+```php
+<h1>Sunset Theme Option</h1>
+
+<?php settings_errors(); ?>
+
+<form action="options.php" method="post">
+    <?php settings_fields( 'sunset-settings-group' ); ?>
+    <?php do_settings_sections( 'mhgufron_sunset' ); ?>
+    <?php submit_button(); ?>
+</form>
+```
+
+Tambahkan fungsi `add_settings_field()` di bawah fungsi `add_settings_section()` dalam file `function-admin.php`
+> add_settings_field( $id, $title, $calback, $page, $section, $args)  
+
+```php
+add_settings_field( 'sidebar-name', 'First Name', 'sunset_sidebar_name', 'mhgufron_sunset', 'sunset-sidebar-options' );
+```
+Buat fungsi dari calback di atas
+```php
+
+```
+
+
+###
+
+
+
+
+
+
 
 
 
