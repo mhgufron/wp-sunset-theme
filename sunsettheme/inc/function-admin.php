@@ -13,7 +13,7 @@ function sunset_add_admin_page()
     add_menu_page( 'Sunset Theme Option', 'Sunset', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page', get_template_directory_uri() . '/assets/img/sunset-icon.png', '110' );
 
     // Generate Sunset Admin Sub Pages
-    add_submenu_page( 'mhgufron_sunset', 'Sunset Theme Option', 'General', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page' );
+    add_submenu_page( 'mhgufron_sunset', 'Sunset Theme Option', 'Sidebar', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page' );
     add_submenu_page( 'mhgufron_sunset', 'Sunset CSS Option', 'Custom CSS', 'manage_options', 'mhgufron_sunset_css', 'sunset_theme_settings_page' );
 
     // Activate custom settings
