@@ -18,8 +18,8 @@ $github = esc_attr( get_option('github_handler') );
             <div id="profile-picture-preview" class="profile-picture" style="background-image: url(<?php print $picture; ?>);">
             </div>
         </div>
-        <h1 class="sunset-username"><?php echo $fullName ?></h1>
-        <h2 class="sunset-description"><?php echo $desrciption ?></h2>
+        <h1 id="full_name_preview" class="sunset-username"><?php echo $fullName ?></h1>
+        <h2 id="description_preview" class="sunset-description"><?php echo $desrciption ?></h2>
         <div class="icon-wrapper"></div>
     </div>
 </div>
