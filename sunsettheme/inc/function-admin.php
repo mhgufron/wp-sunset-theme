@@ -56,7 +56,7 @@ function sunset_sidebar_name()
 function sunset_sidebar_description()
 {
     $desrciption = esc_attr( get_option('user_desciption') );
-    echo '<input type="text" name="user_desrciption" value="' . $desrciption . '" placeholder="User Description" /><p class="description">Write something smart.</p>';
+    echo '<input type="text" name="user_desciption" value="' . $desrciption . '" placeholder="User Description" /><p class="description">Write something smart.</p>';
 }
 
 function sunset_sidebar_twitter()
