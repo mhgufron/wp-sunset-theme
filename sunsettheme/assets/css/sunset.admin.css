@@ -13,3 +13,4 @@ h2.sunset-description { font-size: 13px; margin: 0 0 20px; }
 
 .image-container { display:block; width: 100%; overflow: hidden; text-align: center; }
 .profile-picture { display: block; width: 122px; height: 122px; overflow: hidden; border-radius: 50%; margin: 20px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
+.icon-wrapper a { color: #f1f1f1; padding: 0.2em; font-size: 1.2em;}

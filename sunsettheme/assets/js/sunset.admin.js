@@ -27,6 +27,18 @@ jQuery(document).ready(function() {
 
     });
 
+    function livePreview(input, output, link = false) {
+        $('#' + input).keyup(function(){
+            if (link != false) {
+                var data = link + $('#' + input).val();
+                $('#' + output).attr('href', data);
+            } else {
+                var data = $('#' + input).val();
+                $('#' + output).html(data);
+            }
+        });
+    }
+
     $('#first_name').keyup(function(){
         var firstName = $('#first_name').val();
         var lastName = $('#last_name').val();
@@ -41,13 +53,11 @@ jQuery(document).ready(function() {
         $('#full_name_preview').html(fullName);
     });
 
-    $('#user_desciption').keyup(function(){
-        var description = $('#user_desciption').val();
-        $('#description_preview').html(description);
-    });
-    // $('#user_desciption').keyup(function(){
-    //     var description = $('#user_desciption').val();
-    //     $('#description_preview').text(description);
-    // })
+    livePreview('user_desciption', 'description_preview')
+    livePreview('twitter_handler', 'twitter_preview', 'http://twitter.com/')
+    livePreview('facebook_handler', 'facebook_preview', 'http://facebook.com/')
+    livePreview('github_handler', 'github_preview', 'http://github.com/')
+
+
 
 })
