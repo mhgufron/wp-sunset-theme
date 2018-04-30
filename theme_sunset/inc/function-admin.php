@@ -63,6 +63,18 @@ function sunset_theme_options()
     echo "Activate and Deactivate specific Theme Support Options";
 }
 
+function sunset_post_formats(){
+    $options = get_option( 'post_formats' );
+    $formats = array( 'aside', 'galery', 'link', 'images', 'quote', 'status', 'video', 'audio', 'chat');
+    $output = '';
+    foreach ($formats as $format) {
+        $checked = ( @$options[$format] == 1 ) ? 'checked' : '';
+        $output .= '<label><input type="checkbox" id="' . $format . '" name="post_formats[' . $format . ']" value="1" ' . $checked . ' >' . $format . '</label><br />' ;
+    }
+    echo $output;
+}
+
+// Sidebar Option Function
 function sunset_sidebar_options()
 {
     echo "Customize your Sidebar Information";
