@@ -109,7 +109,7 @@ function sunset_sidebar_github()
 function sunset_sanitize_twitter_handler($input)
 {
     $output = sanitize_text_field( $input );
-    $output =   str_replace('@', '', $output);
+    $output = str_replace('@', '', $output);
     return $output;
 }
 
