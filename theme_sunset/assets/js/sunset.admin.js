@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-
+    // Media Uploader
     var mediaUploader;
 
     $( '#upload-button' ).on("click", function(e) {
@@ -27,6 +27,7 @@ jQuery(document).ready(function() {
 
     });
 
+    // Function Live preview
     function livePreview(input, output, link = false) {
         $('#' + input).keyup(function(){
             if (link != false) {
@@ -53,11 +54,18 @@ jQuery(document).ready(function() {
         $('#full_name_preview').html(fullName);
     });
 
-    livePreview('user_desciption', 'description_preview')
-    livePreview('twitter_handler', 'twitter_preview', 'http://twitter.com/')
-    livePreview('facebook_handler', 'facebook_preview', 'http://facebook.com/')
-    livePreview('github_handler', 'github_preview', 'http://github.com/')
+    livePreview('user_desciption', 'description_preview');
+    livePreview('twitter_handler', 'twitter_preview', 'http://twitter.com/');
+    livePreview('facebook_handler', 'facebook_preview', 'http://facebook.com/');
+    livePreview('github_handler', 'github_preview', 'http://github.com/');
 
-
+    $( '#remove-picture' ).on('click', function(e){
+        e.preventDefault();
+        var answer = confirm("Are you sure you want to remove your Profile Picture?");
+        if ( answer == true ) {
+            $('#profile-picture').val('');
+            $('.sunset-general-form').submit();
+        }
+    });
 
 })
