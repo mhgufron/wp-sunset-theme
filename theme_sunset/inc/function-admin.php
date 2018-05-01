@@ -13,7 +13,6 @@ function sunset_add_admin_page()
     add_menu_page( 'Sunset Theme Option', 'Sunset', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page', get_template_directory_uri() . '/assets/img/sunset-icon.png', '110' );
 
     // Generate Sunset Admin Sub Pages
-    // add_submenu_page( 'parent_slug', 'page_title', 'menu_title', 'capability', 'menu_slug', 'function' );
     add_submenu_page( 'mhgufron_sunset', 'Sunset Sidebar Option', 'Sidebar', 'manage_options', 'mhgufron_sunset', 'sunset_theme_create_page' );
     add_submenu_page( 'mhgufron_sunset', 'Sunset Theme Options', 'Theme Options', 'manage_options', 'mhgufron_sunset_theme', 'sunset_theme_support_page' );
     add_submenu_page( 'mhgufron_sunset', 'Sunset Contact Form', 'Contact Form', 'manage_options', 'mhgufron_sunset_theme_contact', 'sunset_contact_form_page' );
@@ -29,7 +28,6 @@ add_action('admin_menu', 'sunset_add_admin_page');
 function sunset_custom_settings()
 {
     // Sidebar Option
-    // register_setting( 'option_group', 'option_name', 'function');
     register_setting( 'sunset-settings-group', 'profile_picture');
     register_setting( 'sunset-settings-group', 'first_name');
     register_setting( 'sunset-settings-group', 'last_name');
@@ -67,9 +65,27 @@ function sunset_custom_settings()
     add_settings_section( 'sunset-contact-options', 'Contact Form', 'sunset_contact_section', 'mhgufron_sunset_theme_contact');
 
     add_settings_field( 'activate-form', 'Activate Contact Form', 'sunset_activate_contact', 'mhgufron_sunset_theme_contact', 'sunset-contact-options' );
+
+    // Custom CSS Options
+    register_setting( 'sunset-custom-css-options', 'sunset_css' );
+
+    add_settings_section( 'sunset-custom-css-section', 'Custom CSS', 'sunset_custom_css_section_callback', 'mhgufron_sunset_css' );
+
+    add_settings_field( 'custom-css', 'Insert Your Custom CSS', 'sunset_custom_css_callback', 'mhgufron_sunset_css', 'sunset-custom-css-section' );
 }
 
 // Post Formats Callback Function
+function sunset_custom_css_section_callback()
+{
+    echo "Customize Sunset Theme with your own CSS";
+}
+
+function sunset_custom_css_callback() {
+    $css = get_option( 'sunset_css' );
+    $css = ( empty( $css ) ) ? '/* Sunset Theme Custom CSS */' : $css; 
+    echo '<textarea placeholder="Sunset Custom CSS">' . $css . '</textarea>' ;
+}
+
 function sunset_theme_options()
 {
     echo "Activate and Deactivate specific Theme Support Options";
@@ -182,5 +198,5 @@ function sunset_contact_form_page()
 
 function sunset_theme_settings_page()
 {
-    echo "<h1>Sunset Custom CSS</h1>";
+    require_once( get_template_directory() . '/inc/templates/sunset-custom-css.php' );
 }
