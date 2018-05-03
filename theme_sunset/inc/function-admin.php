@@ -67,7 +67,7 @@ function sunset_custom_settings()
     add_settings_field( 'activate-form', 'Activate Contact Form', 'sunset_activate_contact', 'mhgufron_sunset_theme_contact', 'sunset-contact-options' );
 
     // Custom CSS Options
-    register_setting( 'sunset-custom-css-options', 'sunset_css' );
+    register_setting( 'sunset-custom-css-options', 'sunset_css', 'sunset_sanitize_custom_css' );
 
     add_settings_section( 'sunset-custom-css-section', 'Custom CSS', 'sunset_custom_css_section_callback', 'mhgufron_sunset_css' );
 
@@ -82,8 +82,8 @@ function sunset_custom_css_section_callback()
 
 function sunset_custom_css_callback() {
     $css = get_option( 'sunset_css' );
-    $css = ( empty( $css ) ) ? '/* Sunset Theme Custom CSS */' : $css; 
-    echo '<textarea placeholder="Sunset Custom CSS">' . $css . '</textarea>' ;
+    $css = ( empty( $css ) ) ? '/* Sunset Theme Custom CSS */' : $css;
+    echo '<div id="customCss">' . $css . '</div> <textarea id="sunset_css" name="sunset_css" style="display:none; visibility:hidden;">' . $css . '</textarea>' ;
 }
 
 function sunset_theme_options()
@@ -177,6 +177,12 @@ function sunset_sanitize_twitter_handler($input)
 {
     $output = sanitize_text_field( $input );
     $output = str_replace('@', '', $output);
+    return $output;
+}
+
+function sunset_sanitize_custom_css($input)
+{
+    $output = esc_textarea( $input );
     return $output;
 }
 
