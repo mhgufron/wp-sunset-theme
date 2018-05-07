@@ -1,7 +1,9 @@
 <?php
 
 /*
+
 @package sunsettheme
+
     =========================
         ADMIN PAGE
     =========================
@@ -145,7 +147,7 @@ function sunset_sidebar_name()
 {
     $firstName = esc_attr( get_option('first_name') );
     $lastName = esc_attr( get_option('last_name') );
-    echo '<input type="text" id="first_name" name="first_name" value="' . $firstName . '" placeholder="Last Name" /> <input type="text" id="last_name" name="last_name" value="' . $lastName . '" placeholder="Last Name" /><p class="description">Input your first name and last name.</p>';
+    echo '<input type="text" id="first_name" name="first_name" value="' . $firstName . '" placeholder="First Name" /> <input type="text" id="last_name" name="last_name" value="' . $lastName . '" placeholder="Last Name" /><p class="description">Input your first name and last name.</p>';
 }
 
 function sunset_sidebar_description()
