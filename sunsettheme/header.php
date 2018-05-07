@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    <div class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
+                    <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
 
                         <div class="header-content table">
                             <div class="table-cell">
@@ -40,9 +40,18 @@
                             </div><!-- .table-cell -->
                         </div><!-- .header-content -->
 
-                        <div class="nav-container"></div><!-- .nav-container -->
+                        <div class="nav-container">
+                            <nav class="navbar navbar-sunset">
+                                <?php wp_nav_menu( array(
+                                    'theme_location'    => 'primary',
+                                    'container'         => false,
+                                    'menu_class'        => 'nav navbar-nav',
+                                    'walker'            => new Sunset_Walker_Nav_Primary()
+                                ) ); ?>
+                            </nav>
+                        </div><!-- .nav-container -->
 
-                    </div><!-- .header-container -->
+                    </header><!-- .header-container -->
 
                 </div><!-- .col-xs-12 -->
             </div><!-- .row -->
