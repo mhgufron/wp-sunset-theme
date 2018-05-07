@@ -1,9 +1,12 @@
 <?php
-/*
-    This is a template for the header
+/**
+ * This is a template for the footer
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
+ */
 
-    @package sunsettheme
-*/
  ?>
 <?php wp_footer(); ?>
 </body>

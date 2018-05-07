@@ -1,9 +1,12 @@
 <?php
-/*
-    This is a template for the header
+/**
+ * This is a template for the header
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
+ */
 
-    @package sunsettheme
-*/
  ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

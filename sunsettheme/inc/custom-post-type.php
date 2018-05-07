@@ -1,12 +1,10 @@
 <?php
-
-/*
-
-@package sunsettheme
-
-    =========================
-        Theme Custom Post Type
-    =========================
+/**
+ * Theme Custom Post Type
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
  */
 
 $contact = get_option( 'activate_contact' );

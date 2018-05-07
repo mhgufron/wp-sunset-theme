@@ -1,12 +1,10 @@
 <?php
-
-/*
-
-@package sunsettheme
-
-    =========================
-        ADMIN PAGE
-    =========================
+/**
+ * Admin Page
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
  */
 
 function sunset_add_admin_page()

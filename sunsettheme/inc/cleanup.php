@@ -1,13 +1,11 @@
 <?php
-
-/*
-
-@package sunsettheme
-
-    ========================================================
-        REMOVE GENERATOR VERSION NUMBER
-    ========================================================
-*/
+/**
+ * Remove generator version number
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
+ */
 
 /* Remove version from js and css */
 function sunset_remove_wp_version_string( $src )

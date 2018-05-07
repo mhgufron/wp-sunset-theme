@@ -1,12 +1,10 @@
 <?php
-
-/*
-
-@package sunsettheme
-
-    =========================
-        Theme Support
-    =========================
+/**
+ * Wordpress Theme Support
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
  */
 
 $options = get_option( 'post_formats' );

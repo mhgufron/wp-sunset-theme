@@ -1,13 +1,11 @@
 <?php
-
-/*
-
-@package sunsettheme
-
-    ========================================================
-        ADMIN ENQUEUE FUNCTION
-    ========================================================
-*/
+/**
+ * Admin Enqueue Function
+ *
+ * @package sunsettheme
+ * @since 1.0
+ * @version 1.0
+ */
 
 function sunset_load_admin_scripts( $hook )
 {
