@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
-        <title><?php  bloginfo( 'name' ); wp_title(); ?></title>
+        <title><?php bloginfo( 'name' ); wp_title(); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
         <meta charset="<?php bloginfo( 'charset' ); ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -26,13 +26,13 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 no-gutters">
 
                     <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
 
                         <div class="header-content table">
                             <div class="table-cell">
-                                <h1 class="site-title icon-sunset">
+                                <h1 class="site-title sunset-icon">
                                     <i class="icon-logo"></i>
                                     <span class="hide"><?php bloginfo( 'name' ); ?></span>
                                 </h1>
