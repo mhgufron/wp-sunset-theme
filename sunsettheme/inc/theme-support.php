@@ -14,7 +14,7 @@
 */
 
 $options = get_option( 'post_formats' );
-$formats = array( 'aside', 'galery', 'link', 'images', 'quote', 'status', 'video', 'audio', 'chat');
+$formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
 $output = array();
 foreach ($formats as $format) {
     $output[] = ( @$options[$format] == 1 ) ? $format : '';
@@ -90,8 +90,30 @@ function sunset_posted_footer()
     return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">' . get_the_tag_list('<div class="tags-list"><i class="sunset-icon icon-tag"></i> ', ' ', '</div>' ) . '</div><div class="col-xs-12 col-sm-6 text-right">' . $comments . '</div></div></div>';
 }
 
+function sunset_get_attachment()
+{
+    $output = '';
+    if ( has_post_thumbnail() ) {
+        $output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+    } else {
+        $attachments = get_posts( array(
+            'post_type'         => 'attachment',
+            'post_per_pages'    => 1,
+            'post_parent'       => get_the_ID()
+        ) );
+        if ( $attachments ) {
+            foreach ( $attachments as $attachment ) {
+                $output = wp_get_attachment_url( $attachment->ID );
+            }
+        }
 
+        wp_reset_post_data();
 
+    }
+
+    return $output;
+
+}
 
 
 
