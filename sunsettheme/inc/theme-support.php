@@ -90,26 +90,27 @@ function sunset_posted_footer()
     return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">' . get_the_tag_list('<div class="tags-list"><i class="sunset-icon icon-tag"></i> ', ' ', '</div>' ) . '</div><div class="col-xs-12 col-sm-6 text-right">' . $comments . '</div></div></div>';
 }
 
-function sunset_get_attachment()
+function sunset_get_attachment( $num = 1 )
 {
     $output = '';
-    if ( has_post_thumbnail() ) {
+    if ( has_post_thumbnail() && $num == 1 ) {
         $output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
     } else {
         $attachments = get_posts( array(
             'post_type'         => 'attachment',
-            'post_per_pages'    => 1,
+            'post_per_pages'    => $num,
             'post_parent'       => get_the_ID()
         ) );
-        if ( $attachments ) {
+        if ( $attachments && $num == 1 ) {
             foreach ( $attachments as $attachment ) {
                 $output = wp_get_attachment_url( $attachment->ID );
             }
+        } elseif ( $attachments && $num > 1 ) {
+            $output = $attachments;
         }
 
-
+        // wp_reset_post_data();
     }
-    // wp_reset_post_data();
 
     return $output;
 
