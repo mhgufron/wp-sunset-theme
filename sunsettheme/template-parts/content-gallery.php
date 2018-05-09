@@ -11,10 +11,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'sunset-format-gallery' ); ?>>
     <header class="entry-header text-center">
 
-        <?php if ( sunset_get_attachment() ):
-            $attachments = sunset_get_attachment(7);
-            // var_dump( $attachments );
-        ?>
+        <?php if ( sunset_get_attachment() ): ?>
 
             <div id="post-gallery-<?php the_ID(); ?>" class="carousel slide sunset-carousel-thumb" data-ride="carousel">
 
@@ -22,25 +19,21 @@
 
                     <?php
 
-                    $count      = count($attachments)-1;
+                        $attachments = sunset_get_bs_slides( sunset_get_attachment(7) );
+                        foreach ($attachments as $attachment ) :
+                    ?>
 
-                    for ( $i = 0; $i <= $count; $i++ ) :
-                        $active = ($i == 0 ? ' active' : '');
+                        <div class="item <?php echo $attachment['class']; ?> background-image standard-featured" style="background-image: url( <?php echo $attachment['url']; ?> );">
 
-                        $n          = ( $i == $count ? 0 : $i+1 );
-                        $nextImg    = wp_get_attachment_thumb_url( $attachments[$n]->ID );
-                        $p          = ( $i == 0 ? $count : $i-1 );
-                        $prevImg    = wp_get_attachment_thumb_url( $attachments[$p]->ID );
-                        ?>
-
-                        <div class="item <?php echo $active; ?> background-image standard-featured" style="background-image: url( <?php echo wp_get_attachment_url( $attachments[$i]->ID ); ?> );">
-
-                            <div class="hide next-image-preview" data-image="<?php echo $nextImg; ?>"></div>
-                            <div class="hide prev-image-preview" data-image="<?php echo $prevImg; ?>"></div>
+                            <div class="hide next-image-preview" data-image="<?php echo $attachment['next_img']; ?>"></div>
+                            <div class="hide prev-image-preview" data-image="<?php echo $attachment['prev_img']; ?>"></div>
+                            <div class="entry-excerpt image-caption">
+                                <p><?php echo $attachment['caption']; ?></p>
+                            </div>
 
                         </div>
 
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
 
                 </div><!-- .carousel-inner -->
 
@@ -71,9 +64,6 @@
                         </div><!-- .table-cell -->
                     </div><!-- .table -->
                 </a>
-
-                <div class="entry-excerpt image-caption">
-                </div>
 
             </div><!-- .carousel -->
 
