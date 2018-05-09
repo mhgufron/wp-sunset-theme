@@ -23,3 +23,19 @@ The preview from is in left side of from input form,
 
 
 ### 2. Custom CSS
+
+```html
+"This sentence is surrounded by &quot; and &quot;, which are a type of quotation marks."
+
+“This sentence is surrounded by &ldquo; and &rdquo;, which are a type of quotation marks.”
+
+‘This sentence is surrounded by &lsquo; and &rsquo;, which are a type of quotation marks.’
+
+«This sentence is surrounded by &laquo; and &raquo;, which are a type of quotation marks.»
+
+‹This sentence is surrounded by &lsaquo; and &rsaquo;, which are a type of quotation marks.›
+
+„This sentence is surrounded by &bdquo; and &ldquo;, which are a type of quotation marks.“
+
+‚This sentence is surrounded by &sbquo; and &lsquo;, which are a type of quotation marks.‘
+```

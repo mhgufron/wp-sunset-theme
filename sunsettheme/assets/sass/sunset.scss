@@ -229,6 +229,22 @@ h1 { font-size: 48px; font-weight: 200;
     }
 }
 
+/*--------------------------------------------------------------
+9. Quote Post Format
+--------------------------------------------------------------*/
+
+.sunset-format-quote {
+    .quote-content { font-size: 48px; font-weight: 100; line-height: 1.3em;  letter-spacing: 0.03em;
+        &:before,
+        &:after {content: ''; display: inline-block; position: relative; color: #cccccc; font-size: 1.4em; }
+
+        &:before {content: '“'; }
+        &:after {content: '„'; }
+        a { color: $light-grey; }
+    }
+    .quote-author { color: $lighter-grey-2; font-size: 12px; letter-spacing: 0.06; font-weight: bold; }
+}
+
 
 
 
