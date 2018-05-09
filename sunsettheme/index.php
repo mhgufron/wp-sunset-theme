@@ -31,6 +31,10 @@ get_header();?>
 
         </div><!-- .container -->
 
+        <div class="container text-center">
+            <a class="btn btn-lg btn-default" href="#"><span class="sunset-icon icon-loading"></span>Load More</a>
+        </div><!-- .container -->
+
     </main><!-- .primary -->
 </div>
 
