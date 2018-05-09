@@ -15,7 +15,7 @@
         <?php
 
             $link = sunset_grab_url();
-            the_title( '<h1 class="entry-title">', '<div class="link-icon"><span class="sunset-icon icon-link"></span></div></h1>');
+            the_title( '<h1 class="entry-title"><a href="' . $link . '" target="_blank">', '<div class="link-icon"><span class="sunset-icon icon-link"></span></div></a></h1>');
 
         ?>
 

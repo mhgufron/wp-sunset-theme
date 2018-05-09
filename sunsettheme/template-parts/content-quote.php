@@ -13,7 +13,7 @@
     <header class="entry-header text-center">
 
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <div class="col-sm-10 col-sm-offset-1">
 
                 <h1 class="quote-content"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php echo get_the_content() ?></a></h1>
                 <?php the_title( '<h2 class="quote-author"> - ', ' - </h2>'); ?>
