@@ -13,7 +13,7 @@ get_header();?>
 
     <main id="main" class="site-main" role="main">
 
-        <div class="container">
+        <div class="container sunset-post-container">
 
             <?php
 
@@ -31,8 +31,10 @@ get_header();?>
 
         </div><!-- .container -->
 
+        </form>
+
         <div class="container text-center">
-            <a class="btn btn-lg btn-default" href="#"><span class="sunset-icon icon-loading"></span>Load More</a>
+            <a class="btn btn-lg btn-default sunset-load-more" data-page="1" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>" href="#"><span class="sunset-icon icon-loading"></span> Load More</a>
         </div><!-- .container -->
 
     </main><!-- .primary -->
