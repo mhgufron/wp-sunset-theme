@@ -20,12 +20,14 @@ jQuery(document).ready( function($) {
     $(document).on('click', '.sunset-load-more', function(e) {
         e.preventDefault();
 
+        var that    = $(this);
         var page    = $(this).data('page');
-        var ajaxurl = $(this).data('url');
+        var newPage = page+1;
+        var ajaxUrl = that.data('url');
 
         $.ajax({
 
-            url     : ajaxurl,
+            url     : ajaxUrl,
             type    : 'post',
             data    : {
 
@@ -39,6 +41,7 @@ jQuery(document).ready( function($) {
             },
             success : function( response ) {
 
+                that.data('page', newPage);
                 $('.sunset-post-container').append(response);
 
             }
