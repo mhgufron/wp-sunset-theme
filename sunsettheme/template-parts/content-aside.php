@@ -6,10 +6,12 @@
  * @since 1.0
  * @version 1.0
  */
+
+$class = get_query_var('post-class')
+
 ?>
 
-
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'sunset-format-aside' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array('sunset-format-aside', $class ) ); ?>>
 
     <div class="aside-container">
 
@@ -43,7 +45,7 @@
             </div><!-- .col-md-10 -->
 
         </div><!-- .row -->
-        
+
         <footer class="entry-footer">
 
             <div class="row">
