@@ -1,5 +1,5 @@
 jQuery(document).ready( function($) {
-    //revealPost();
+    revealPost();
 
     var carousel = '.sunset-carousel-thumb';
 
@@ -54,7 +54,7 @@ jQuery(document).ready( function($) {
 
                     revealPost();
 
-                }, 2000 );
+                }, 1000 );
 
             }
 
@@ -73,7 +73,7 @@ jQuery(document).ready( function($) {
             if ( i >= posts.length) return false;
 
             var el = posts[i];
-            $(el).addClass('reveal');
+            $(el).addClass('reveal').find('.sunset-carousel-thumb').carousel();
             i++;
 
         }, 320 )

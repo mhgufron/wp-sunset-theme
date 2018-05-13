@@ -7,11 +7,11 @@
  * @version 1.0
  */
 
-$class = get_query_var('post-class')
+// $class = get_query_var('post-class')
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( array('sunset-format-aside', $class ) ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array('sunset-format-aside' ) ); ?>>
 
     <div class="aside-container">
 
