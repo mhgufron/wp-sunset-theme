@@ -17,7 +17,7 @@ jQuery(document).ready( function($) {
     }
 
     /* Ajax Comment */
-    $(document).on('click', '.sunset-load-more', function(e) {
+    $(document).on('click', '.sunset-load-more:not(.loading)', function(e) {
         e.preventDefault();
 
         var that    = $(this);
@@ -25,6 +25,9 @@ jQuery(document).ready( function($) {
         var newPage = page+1;
         var ajaxUrl = that.data('url');
 
+        that.addClass('loading').find('.text').slideUp(320);
+        that.find('.sunset-icon').addClass('spin');
+        
         $.ajax({
 
             url     : ajaxUrl,
@@ -43,6 +46,7 @@ jQuery(document).ready( function($) {
 
                 that.data('page', newPage);
                 $('.sunset-post-container').append(response);
+                // that.removeClass('loading');
 
             }
 

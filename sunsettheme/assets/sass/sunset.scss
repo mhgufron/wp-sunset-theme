@@ -317,7 +317,32 @@ h1 { font-size: 48px; font-weight: 200;
     display: block;
 }
 
+/*--------------------------------------------------------------
+14. Ajax Loading
+--------------------------------------------------------------*/
+.btn-sunset-load {
+    display: block;
+    width: 200px;
+    color: #222;
+    font-size: 30px;
+    margin: 0 auto;
+    cursor: pointer;
+    opacity: 0.5;
+    @include animate( opacity, 320ms );
 
+    &:hover,
+    &:focus,
+    &.loading {
+        opacity: 1;
+    }
+    &.loading {
+        cursor: default;
+    }
+
+    span {
+        display: block;
+    }
+}
 
 
 
