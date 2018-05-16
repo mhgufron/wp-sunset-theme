@@ -80,9 +80,7 @@ a { color: $primary-color; @include animate( color, 320ms );
 /*--------------------------------------------------------------
 4. Standard Post Format
 --------------------------------------------------------------*/
-article { padding: 40px 0;
-    &:first-child { padding-top: 50px; }
-}
+article { padding: 40px 0; }
 
 h1 { font-size: 48px; font-weight: 200;
     a { color: $primary-color; }
@@ -321,6 +319,8 @@ h1 { font-size: 48px; font-weight: 200;
 14. Ajax Loading
 --------------------------------------------------------------*/
 .sunset-post-container {
+
+    padding-top: 40px;
 
     article {
         @include animate( all, 320ms );

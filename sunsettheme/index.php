@@ -19,6 +19,8 @@ get_header();?>
 
                 if ( have_posts() ) :
 
+                    echo '<div class="page-limit" data-page="/' . sunset_check_paged() . '" >';
+
                     while ( have_posts() ): the_post();
 
                         // $class = 'reveal';
@@ -26,6 +28,8 @@ get_header();?>
                         get_template_part( 'template-parts/content', get_post_format() );
 
                     endwhile;
+
+                    echo '</div>';
 
                 endif;
 
@@ -36,7 +40,7 @@ get_header();?>
         </form>
 
         <div class="container text-center">
-            <a class="btn-sunset-load sunset-load-more" data-page="1" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
+            <a class="btn-sunset-load sunset-load-more" data-page="<?php echo sunset_check_paged(1); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
                 <span class="sunset-icon icon-loading"></span>
                 <span class="text">Load More</span>
             </a>
