@@ -13,7 +13,12 @@ add_action( 'wp_ajax_sunset_load_more', 'sunset_load_more' );
 function sunset_load_more()
 {
 
-    $paged = $_POST['page'] + 1;
+    $paged  = $_POST['page'] + 1;
+    $prev   = $_POST['prev'];
+
+    if ( $prev == 1 && $_POST['page'] != 1 ) {
+        $paged = $_POST['page'] - 1;
+    }
 
     $query = new WP_Query( array(
         'past_type'     => 'post',
@@ -33,6 +38,10 @@ function sunset_load_more()
 
         echo '</div>';
 
+    else:
+
+        echo 0;
+
     endif;
 
     wp_reset_postdata();
@@ -45,7 +54,7 @@ function sunset_check_paged( $num = null )
 {
     $output = '';
 
-    if ( is_paged() ) { 'page/' . get_query_var( 'paged' ); }
+    if ( is_paged() ) { $output = 'page/' . get_query_var( 'paged' ); }
 
     if ( $num == 1 ) {
         $paged = ( get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ) );
@@ -54,8 +63,6 @@ function sunset_check_paged( $num = null )
         return $output;
     }
 }
-
-
 
 
 
