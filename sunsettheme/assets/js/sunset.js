@@ -1,156 +1,149 @@
-jQuery(document).ready( function($){
-	//custom Sunset scripts
+jQuery(document).ready( function($) {
+    // Custom Sunset Script
 
-	/* init functions */
-	revealPosts();
+    /* init function */
+    revealPost();
 
-	/* variable decalarations */
-	var last_scroll = 0;
+    /* Variable declaration */
+    var carousel    = '.sunset-carousel-thumb';
+    var last_scroll = 0;
 
-	/* carousel functions */
-	$(document).on('click', '.sunset-carousel-thumb', function() {
-    	var id = $("#" + $(this).attr("id"));
-    	$(id).on('slid.bs.carousel', function () {
-	    	sunset_get_bs_thumbs(id);
-    	});
+    /* Carousel functions */
+    sunset_get_bs_thumbs( carousel );
+
+    $( carousel ).on('slid.bs.carousel', function() {
+        sunset_get_bs_thumbs( carousel );
     });
 
-    $(document).on('mouseenter', '.sunset-carousel-thumb', function() {
-    	var id = $("#" + $(this).attr("id"));
-        sunset_get_bs_thumbs(id);
+    function sunset_get_bs_thumbs( carousel ) {
+        var nextThumb = $('.item.active').find('.next-image-preview').data('image');
+        var prevThumb = $('.item.active').find('.prev-image-preview').data('image');
+        $(carousel).find('.carousel-control.right').find('.thumbnail-container').css({ 'background-image': 'url(' + nextThumb + ')'});
+        $(carousel).find('.carousel-control.left').find('.thumbnail-container').css({ 'background-image': 'url(' + prevThumb + ')'});
+    }
+
+    /* Scroll Function */
+    $(window).scroll( function() {
+
+        var scroll = $(window).scrollTop();
+        if ( Math.abs( scroll - last_scroll ) > $(window).height() * 0.1 ) {
+            last_scroll = scroll;
+
+            $('.page-limit').each( function( index ) {
+
+                if ( isVisible( $(this) ) ) {
+                    history.replaceState( null, null, $(this).attr( "data-page" ) );
+                    return false;
+                }
+
+            } )
+        }
+
+    } )
+
+    /* Ajax Comment */
+    $(document).on('click', '.sunset-load-more:not(.loading)', function(e) {
+        e.preventDefault();
+
+        var that    = $(this);
+        var page    = $(this).data('page');
+        var newPage = page+1;
+        var ajaxUrl = that.data('url');
+        var prev    = that.data('prev');
+        var archive = that.data('archive');
+
+        if ( typeof prev === 'undefined' ) {
+            prev    = 0;
+        }
+
+        if ( typeof archive === 'undefined' ) {
+            prev    = 0;
+        }
+
+        console.log(prev);
+
+        that.addClass('loading').find('.text').slideUp(320);
+        that.find('.sunset-icon').addClass('spin');
+
+        $.ajax({
+
+            url     : ajaxUrl,
+            type    : 'post',
+            data    : {
+
+                page    : page,
+                prev    : prev,
+                archive : archive,
+                action  : 'sunset_load_more'
+
+            },
+            error   : function( response ) {
+                console.log(response);
+                console.log('error');
+            },
+            success : function( response ) {
+
+                if ( response == 0 ) {
+                    $('.sunset-post-container').append('<div class="text-center"><h3>You reach the end of the line!</h3> <p>No More posts to load</p></div>')
+                    that.slideUp(320);
+                } else {
+                    setTimeout(function() {
+
+                        if ( prev == 1 ) {
+                            $('.sunset-post-container').prepend(response);
+                            newPage = page-1;
+                        } else {
+                            $('.sunset-post-container').append(response);
+                        }
+
+                        if ( newPage == 1 ) {
+                            that.slideUp(320);
+                        } else {
+                            that.data('page', newPage);
+
+                            that.removeClass('loading').find('.text').slideDown(320);
+                            that.find('.sunset-icon').removeClass('spin');
+                        }
+                        revealPost();
+
+                    }, 1000 );
+                }
+
+
+            }
+
+        })
+
     });
 
-	function sunset_get_bs_thumbs( id ){
+    /* helper function */
+    function revealPost() {
 
-		var nextThumb = $(id).find(".item.active").find(".next-image-preview").data("image");
-        var prevThumb = $(id).find(".item.active").find(".prev-image-preview").data("image");
-        $(id).find(".right.carousel-control").find(".thumbnail-container").css({"background-image" : "url("+ nextThumb +")"});
-        $(id).find(".left.carousel-control").find(".thumbnail-container").css({"background-image" : "url("+ prevThumb +")"});
+        var posts   = $('article:not(.reveal)');
+        var i       = 0;
 
-	}
+        setInterval( function() {
 
-	/* Ajax functions */
-	$(document).on('click','.sunset-load-more:not(.loading)', function(){
+            if ( i >= posts.length) return false;
 
-		var that = $(this);
-		var page = $(this).data('page');
-		var newPage = page+1;
-		var ajaxurl = that.data('url');
-		var prev = that.data('prev');
-		var archive = that.data('archive');
+            var el = posts[i];
+            $(el).addClass('reveal').find('.sunset-carousel-thumb').carousel();
+            i++;
 
-		if( typeof prev === 'undefined' ){
-			prev = 0;
-		}
+        }, 320 )
 
-		if( typeof archive === 'undefined' ){
-			archive = 0;
-		}
+    }
 
-		that.addClass('loading').find('.text').slideUp(320);
-		that.find('.sunset-icon').addClass('spin');
+    function isVisible( element ) {
 
-		$.ajax({
+        var scroll_pos      = $(window).scrollTop();
+        var window_height   = $(window).height();
+        var el_top          = $(element).offset().top;
+        var el_height       = $(element).height();
+        var el_bottom       = el_top + el_height;
+        return ( ( el_bottom - el_height*0.25 > scroll_pos ) && ( el_top < ( scroll_pos + 0.5 * window_height ) ) )
 
-			url : ajaxurl,
-			type : 'post',
-			data : {
-
-				page : page,
-				prev : prev,
-				archive : archive,
-				action: 'sunset_load_more'
-
-			},
-			error : function( response ){
-				console.log(response);
-			},
-			success : function( response ){
-
-				if( response == 0 ){
-
-					$('.sunset-posts-container').append( '<div class="text-center"><h3>You reached the end of the line!</h3><p>No more posts to load.</p></div>' );
-					that.slideUp(320);
-
-				} else {
-
-					setTimeout(function(){
-
-						if( prev == 1 ){
-							$('.sunset-posts-container').prepend( response );
-							newPage = page-1;
-						} else {
-							$('.sunset-posts-container').append( response );
-						}
-
-						if( newPage == 1 ){
-
-							that.slideUp(320);
-
-						} else {
-
-							that.data('page', newPage);
-
-							that.removeClass('loading').find('.text').slideDown(320);
-							that.find('.sunset-icon').removeClass('spin');
-
-						}
-
-						revealPosts();
-
-					}, 1000);
-
-				}
-
-
-			}
-
-		});
-
-	});
-
-	/* scroll function */
-	$(window).scroll( function(){
-
-		var scroll = $(window).scrollTop();
-
-		if( Math.abs( scroll - last_scroll ) > $(window).height()*0.1 ) {
-			last_scroll = scroll;
-
-			$('.page-limit').each(function( index ){
-
-				if( isVisible( $(this) ) ){
-
-					history.replaceState( null, null, $(this).attr("data-page") );
-					return(false);
-
-				}
-
-			});
-
-		}
-
-	});
-
-	/* helper functions */
-	function revealPosts(){
-
-		var posts = $('article:not(.reveal)');
-		var i = 0;
-
-		setInterval(function(){
-
-			if( i >= posts.length ) return false;
-
-			var el = posts[i];
-			$(el).addClass('reveal').find('.sunset-carousel-thumb').carousel();
-
-			i++
-
-		}, 200);
-
-	}
-
+    }
 	function isVisible( element ){
 
 		var scroll_pos = $(window).scrollTop();
@@ -162,5 +155,18 @@ jQuery(document).ready( function($){
 
 	}
 
+} )
 
-});
+
+
+
+
+
+
+
+
+
+
+
+
+//
