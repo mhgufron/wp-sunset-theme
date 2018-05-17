@@ -10,7 +10,6 @@
 get_header();?>
 
 <div id="primary" class="content-area">
-
     <main id="main" class="site-main" role="main">
 
         <header class="archive-header text-center">
@@ -18,15 +17,17 @@ get_header();?>
         </header>
 
         <?php if ( is_paged() ): ?>
+
             <div class="container text-center container-load-previous">
                 <a class="btn-sunset-load sunset-load-more" data-prev="1" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-page="<?php echo sunset_check_paged(1); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
                     <span class="sunset-icon icon-loading"></span>
                     <span class="text">Load Previous</span>
                 </a>
             </div><!-- .container -->
+
         <?php endif; ?>
 
-        <div class="container sunset-post-container">
+        <div class="container sunset-posts-container">
 
             <?php if ( have_posts() ) :
 
@@ -45,8 +46,6 @@ get_header();?>
              ?>
 
         </div><!-- .container -->
-
-        </form>
 
         <div class="container text-center">
             <a class="btn-sunset-load sunset-load-more" data-page="<?php echo sunset_check_paged(1); ?>" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">

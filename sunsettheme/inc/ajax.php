@@ -28,40 +28,52 @@ function sunset_load_more()
     );
 
     if ( $archive != '0' ) {
+
         $archVal = explode( '/', $archive );
 
         if ( in_array( 'category', $archVal ) ) {
+
             $type           = 'category_name';
             $curKey         = array_keys( $archVal, 'category' );
             $nextKey        = $curKey[0]+1;
             $value          = $archVal[ $nextKey ];
+
             $args[ $type ]  = $value;
+
         }
 
         if ( in_array( 'tag', $archVal ) ) {
+
             $type           = 'tag';
             $curKey         = array_keys( $archVal, 'tag' );
             $nextKey        = $curKey[0]+1;
             $value          = $archVal[ $nextKey ];
+
             $args[ $type ]  = $value;
+
         }
 
         if ( in_array( 'author', $archVal ) ) {
+
             $type           = 'author';
             $curKey         = array_keys( $archVal, 'author' );
             $nextKey        = $curKey[0]+1;
             $value          = $archVal[ $nextKey ];
+
             $args[ $type ]  = $value;
+
         }
 
         // Check page trai and remove "page" value
         if ( in_array( 'page', $archVal ) ) {
+
             $pageVal = explode( 'page', $archive );
             $page_trail = $pageVal[0];
+
         } else {
             $page_trail = $archive;
         }
-        
+
     } else {
         $page_trail = '/';
     }
@@ -70,7 +82,7 @@ function sunset_load_more()
 
     if ( $query->have_posts() ) :
 
-        echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '" >';
+        echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '/" >';
 
         while ( $query->have_posts() ): $query->the_post();
 

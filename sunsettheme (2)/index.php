@@ -22,7 +22,7 @@ get_header();?>
             </div><!-- .container -->
         <?php endif; ?>
 
-        <div class="container sunset-posts-container">
+        <div class="container sunset-post-container">
 
             <?php
 
