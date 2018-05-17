@@ -13,22 +13,64 @@ add_action( 'wp_ajax_sunset_load_more', 'sunset_load_more' );
 function sunset_load_more()
 {
 
-    $paged  = $_POST['page'] + 1;
-    $prev   = $_POST['prev'];
+    $paged      = $_POST['page'] + 1;
+    $prev       = $_POST['prev'];
+    $archive    = $_POST['archive'];
 
     if ( $prev == 1 && $_POST['page'] != 1 ) {
         $paged = $_POST['page'] - 1;
     }
 
-    $query = new WP_Query( array(
-        'past_type'     => 'post',
+    $args = array(
+        'post_type'     => 'post',
         'post_status'   => 'publish',
         'paged'         => $paged
-    ) );
+    );
+
+    if ( $archive != '0' ) {
+        $archVal = explode( '/', $archive );
+
+        if ( in_array( 'category', $archVal ) ) {
+            $type           = 'category_name';
+            $curKey         = array_keys( $archVal, 'category' );
+            $nextKey        = $curKey[0]+1;
+            $value          = $archVal[ $nextKey ];
+            $args[ $type ]  = $value;
+        }
+
+        if ( in_array( 'tag', $archVal ) ) {
+            $type           = 'tag';
+            $curKey         = array_keys( $archVal, 'tag' );
+            $nextKey        = $curKey[0]+1;
+            $value          = $archVal[ $nextKey ];
+            $args[ $type ]  = $value;
+        }
+
+        if ( in_array( 'author', $archVal ) ) {
+            $type           = 'author';
+            $curKey         = array_keys( $archVal, 'author' );
+            $nextKey        = $curKey[0]+1;
+            $value          = $archVal[ $nextKey ];
+            $args[ $type ]  = $value;
+        }
+
+        // Check page trai and remove "page" value
+        if ( in_array( 'page', $archVal ) ) {
+            $pageVal = explode( 'page', $archive );
+            $page_trail = $pageVal[0];
+        } else {
+            $page_trail = $archive;
+        }
+
+    } else {
+        $page_trail = '/';
+    }
+
+    $query = new WP_Query( $args );
 
     if ( $query->have_posts() ) :
 
-        echo '<div class="page-limit" data-page="/page/' . $paged . '" >';
+        echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '/" >';
 
         while ( $query->have_posts() ): $query->the_post();
 

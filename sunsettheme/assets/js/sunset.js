@@ -50,8 +50,13 @@ jQuery(document).ready( function($) {
         var newPage = page+1;
         var ajaxUrl = that.data('url');
         var prev    = that.data('prev');
+        var archive = that.data('archive');
 
         if ( typeof prev === 'undefined' ) {
+            prev    = 0;
+        }
+
+        if ( typeof archive === 'undefined' ) {
             prev    = 0;
         }
 
@@ -68,6 +73,7 @@ jQuery(document).ready( function($) {
 
                 page    : page,
                 prev    : prev,
+                archive : archive,
                 action  : 'sunset_load_more'
 
             },
