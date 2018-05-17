@@ -7,55 +7,56 @@
  * @version 1.0
  */
 
-get_header();?>
+ get_header(); ?>
 
-<div id="primary" class="content-area">
+ <div id="primary" class="content-area">
+     <main id="main" class="site-main" role="main">
 
-    <main id="main" class="site-main" role="main">
+         <header class="archive-header text-center">
+             <?php the_archive_title('<h1 class="page-title">', '</h1>'); ?>
+         </header>
 
-        <header class="archive-header text-center">
-            <?php the_archive_title('<h1 class="page-title">', '</h1>'); ?>
-        </header>
+         <?php if( is_paged() ): ?>
 
-        <?php if ( is_paged() ): ?>
-            <div class="container text-center container-load-previous">
-                <a class="btn-sunset-load sunset-load-more" data-prev="1" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-page="<?php echo sunset_check_paged(1); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
-                    <span class="sunset-icon icon-loading"></span>
-                    <span class="text">Load Previous</span>
-                </a>
-            </div><!-- .container -->
-        <?php endif; ?>
+             <div class="container text-center container-load-previous">
+                 <a class="btn-sunset-load sunset-load-more" data-prev="1" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-page="<?php echo sunset_check_paged(1); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+                     <span class="sunset-icon icon-loading"></span>
+                     <span class="text">Load Previous</span>
+                 </a>
+             </div><!-- .container -->
 
-        <div class="container sunset-post-container">
+         <?php endif; ?>
 
-            <?php if ( have_posts() ) :
+         <div class="container sunset-posts-container">
 
-                    echo '<div class="page-limit" data-page="' . $_SERVER["REQUEST_URI"] . '" >';
+             <?php
 
-                    while ( have_posts() ): the_post();
+             if( have_posts() ):
 
-                        get_template_part( 'template-parts/content', get_post_format() );
+                 echo '<div class="page-limit" data-page="' . $_SERVER["REQUEST_URI"] . '">';
 
-                    endwhile;
+                 while( have_posts() ): the_post();
 
-                    echo '</div>';
+                 get_template_part( 'template-parts/content', get_post_format() );
 
-                endif;
+             endwhile;
 
-             ?>
+             echo '</div>';
 
-        </div><!-- .container -->
+         endif;
 
-        </form>
+         ?>
 
-        <div class="container text-center">
-            <a class="btn-sunset-load sunset-load-more" data-page="<?php echo sunset_check_paged(1); ?>" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
-                <span class="sunset-icon icon-loading"></span>
-                <span class="text">Load More</span>
-            </a>
-        </div><!-- .container -->
+     </div><!-- .container -->
 
-    </main><!-- .primary -->
-</div>
+     <div class="container text-center">
+         <a class="btn-sunset-load sunset-load-more" data-page="<?php echo sunset_check_paged(1); ?>" data-archive="<?php echo sunset_grab_current_uri(); ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+             <span class="sunset-icon icon-loading"></span>
+             <span class="text">Load More</span>
+         </a>
+     </div><!-- .container -->
+
+ </main>
+</div><!-- #primary -->
 
 <?php get_footer(); ?>
