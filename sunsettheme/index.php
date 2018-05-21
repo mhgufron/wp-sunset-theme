@@ -20,9 +20,9 @@ get_header();?>
                     <span class="text">Load Previous</span>
                 </a>
             </div><!-- .container -->
-        <?php endif; ?>
+        <?php endif; ?>test
 
-        <div class="container sunset-posts-container">
+        <div class="container sunset-post-container">
 
             <?php
 
