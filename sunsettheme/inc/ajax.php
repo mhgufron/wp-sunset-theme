@@ -29,41 +29,32 @@ function sunset_load_more()
 
     if ( $archive != '0' ) {
 
-        $archVal = explode( '/', $archive );
+        $archVal    = explode( '/', $archive );
+        $fliped     = array_flip( $archVal );
 
+        if ( isset( $fliped['category'] ) || isset( $fliped['tag'] ) || isset( $fliped['author'] ) ) {
 
-        if ( in_array( 'category', $archVal ) ) {
-            $type = 'category_name';
-            $curKey = array_keys( $archVal, 'category' );
-            $nextKey = $curKey[0]+1;
-            $value = $archVal[ $nextKey ];
+            if ( isset( $fliped['category'] ) ) {
+                $type   = 'category_name';
+                $key    = 'category';
+            } else if  ( isset( $fliped['tag'] ) ) {
+                $type   = 'tag';
+                $key    = $type;
+            } else if  ( isset( $fliped['author'] ) ) {
+                $type   = 'author';
+                $key    = $type;
+            }
 
-            $args[ $type ] = $value;
-
-        }
-
-        if ( in_array( 'tag', $archVal ) ) {
-            $type = 'tag';
-            $curKey = array_keys( $archVal, 'tag' );
-            $nextKey = $curKey[0]+1;
-            $value = $archVal[ $nextKey ];
-
-            $args[ $type ] = $value;
-
-        }
-
-        if ( in_array( 'author', $archVal ) ) {
-            $type = 'author';
-            $curKey = array_keys( $archVal, 'author' );
-            $nextKey = $curKey[0]+1;
-            $value = $archVal[ $nextKey ];
+            $curKey     = array_keys( $archVal, $key );
+            $nextKey    = $curKey[0]+1;
+            $value      = $archVal[ $nextKey ];
 
             $args[ $type ] = $value;
 
         }
 
         /* Check page trail and remove "page" value */
-        if ( in_array( 'page', $archVal ) ) {
+        if ( isset( $fliped['page'] ) ) {
             $pageVal = explode( 'page', $archive );
             $page_trail = $pageVal[0];
         } else {
