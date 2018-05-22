@@ -93,12 +93,12 @@ function sunset_posted_footer()
 function sunset_get_attachment( $num = 1 )
 {
     $output = '';
-    if ( has_post_thumbnail() && $num == 1 ) {
+    if ( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ) && $num == 1 ) {
         $output = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
     } else {
         $attachments = get_posts( array(
             'post_type'         => 'attachment',
-            'post_per_pages'    => $num,
+            'posts_per_pages'   => $num,
             'post_parent'       => get_the_ID()
         ) );
         if ( $attachments && $num == 1 ) {
@@ -113,6 +113,7 @@ function sunset_get_attachment( $num = 1 )
     }
 
     return $output;
+    echo wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
 
 }
 
