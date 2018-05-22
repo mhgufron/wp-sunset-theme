@@ -44,7 +44,7 @@ function sunset_load_scripts()
 
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.6', 'all' );
     wp_enqueue_style( 'sunset', get_template_directory_uri() . '/assets/css/sunset.css', array(), '1.0.0', 'all' );
-    wp_enqueue_style( 'raleway', 'https://fonts.googleapis.com/css?family=Raleway: 200, 300, 500, 700' );
+    wp_enqueue_style( 'raleway', 'https://fonts.googleapis.com/css?family=Raleway:200,300,500,700' );
     wp_register_style( 'font_awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all' );
     wp_enqueue_style( 'font_awesome' );
 
