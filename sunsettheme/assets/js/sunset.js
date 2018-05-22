@@ -12,13 +12,13 @@ jQuery(document).ready( function($) {
         var id = $('#' + $(this).attr('id'));
         $(id).on('slid.bs.carousel', function () {
             sunset_get_bs_thumbs(id);
-        })
-    })
+        });
+    });
 
     $(document).on('mouseover', '.sunset-carousel-thumb', function () {
         var id = $('#' + $(this).attr('id'));
         sunset_get_bs_thumbs(id);
-    })
+    });
 
     function sunset_get_bs_thumbs( id ) {
         var nextThumb = $(id).find('.item.active').find('.next-image-preview').data('image');

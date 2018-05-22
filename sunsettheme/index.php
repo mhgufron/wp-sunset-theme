@@ -46,8 +46,6 @@ get_header();?>
 
         </div><!-- .container -->
 
-        </form>
-
         <div class="container text-center">
             <a class="btn-sunset-load sunset-load-more" data-page="<?php echo sunset_check_paged(1); ?>" data-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
                 <span class="sunset-icon icon-loading"></span>
