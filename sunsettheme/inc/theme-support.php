@@ -42,6 +42,9 @@ function sunset_register_nav_menu()
 }
 add_action( 'after_setup_theme', 'sunset_register_nav_menu' );
 
+/* Activate html5 features */
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
 /*
     ========================================================
         Blog Loop custom Function
@@ -216,7 +219,6 @@ function sunset_share_this( $content )
         $content    .= '<li><a href="' . $facebook . '" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>';
         $content    .= '<li><a href="' . $google . '" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>';
         $content    .= '</ul></div><!-- .sunset-share -->';
-
 
     }
 
