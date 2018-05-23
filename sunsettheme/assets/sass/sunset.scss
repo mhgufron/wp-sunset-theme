@@ -405,7 +405,19 @@ h1 { font-size: 48px; font-weight: 200;
     }
 }
 
+.post-link-nav {
+    padding: 10px 0;
 
+    a {
+        padding: 0 5px;
+        color: $light-orange;
+
+        &:hover,
+        &:focus {
+            color: $orange;
+        }
+    }
+}
 
 
 
