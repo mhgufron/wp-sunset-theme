@@ -384,7 +384,8 @@ h1 { font-size: 48px; font-weight: 200;
     font-weight: 300;
 
     a,
-    .sunset-tooltip {
+    .sunset-tooltip,
+    .sunset-popover {
         cursor: pointer;
         color: $light-orange;
 
