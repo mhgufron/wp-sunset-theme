@@ -195,8 +195,36 @@ function sunset_post_navigation()
     return $nav;
 }
 
+function sunset_share_this( $content )
+{
+    if ( is_single() ) {
+        $content    .= '<div class="sunset-shareThis"> <h4>Share This</h4>';
+
+        $title      = get_the_title();
+        $permalink  = get_permalink();
+
+        $twitterHandler = ( get_option( 'twitter_handler' ) ? '&amp;via=' . esc_attr( get_option( 'twitter_handler' ) ) : '' );
+
+        $twitter    = 'https://twitter.com/intent/tweet?text=Hey! Read this: ' . $title . '&amp;url=' . $permalink . $twitterHandler;
+        $facebook   = 'https://www.facebook.com/sharer.php?u=' . $permalink;
+        $google     = 'https://plus.google.com/share?url=' . $permalink . '&text=' . $title;
 
 
+
+        $content    .= '<ul>';
+        $content    .= '<li><a href="' . $twitter . '" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>';
+        $content    .= '<li><a href="' . $facebook . '" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>';
+        $content    .= '<li><a href="' . $google . '" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>';
+        $content    .= '</ul></div><!-- .sunset-share -->';
+
+
+    }
+
+    return $content;
+
+}
+
+add_filter( 'the_content', 'sunset_share_this' );
 
 
 
