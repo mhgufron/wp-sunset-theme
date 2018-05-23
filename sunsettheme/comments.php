@@ -19,7 +19,40 @@ if ( post_password_required() ) {
         // We have comments
     ?>
 
-    <ol class="comments-list">
+    <h2 class="comment-title">
+        <?php
+
+            printf(
+                esc_html( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sunsettheme' ) ),
+                number_format_i18n( get_comments_number() ),
+                '<span>' . get_the_title() . '</span>'
+            );
+
+         ?>
+    </h2>
+
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ): ?>
+        <nav id="comment-nav-top" class="comment-navigation" role="navigation">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="post-link-nav">
+                        <span class="sunset-icon icon-chevron-left" aria-hidden="true"></span>
+                        <?php previous_comments_link( esc_html__( 'Older Comments', 'sunsettheme' ) ) ?>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="post-link-nav text-right">
+                        <?php next_comments_link( esc_html__( 'Newer Comments', 'sunsettheme' ) ) ?>
+                        <span class="sunset-icon icon-chevron-right" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+            </div><!-- .row -->
+        </nav>
+    <?php endif; ?>
+
+    <ol class="comment-list">
 
         <?php
 
@@ -33,7 +66,7 @@ if ( post_password_required() ) {
             'reply_text'        => 'Reply',
             'page'              => '',
             'per_page'          => '',
-            'avatar_size'       => 32,
+            'avatar_size'       => 64,
             'reverse_top_level' => null,
             'revrese_children'  => '',
             'format'            => 'html5',
@@ -46,6 +79,27 @@ if ( post_password_required() ) {
 
     </ol>
 
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ): ?>
+        <nav id="comment-nav-bottom" class="comment-navigation" role="navigation">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="post-link-nav">
+                        <span class="sunset-icon icon-chevron-left" aria-hidden="true"></span>
+                        <?php previous_comments_link( esc_html__( 'Older Comments', 'sunsettheme' ) ) ?>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="post-link-nav text-right">
+                        <?php next_comments_link( esc_html__( 'Newer Comments', 'sunsettheme' ) ) ?>
+                        <span class="sunset-icon icon-chevron-right" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+            </div><!-- .row -->
+        </nav>
+    <?php endif; ?>
+
     <?php
         if ( !comments_open() && get_comments_number() ) :
     ?>
@@ -57,7 +111,6 @@ if ( post_password_required() ) {
     ?>
 
     <?php
-
 
         endif;
 
