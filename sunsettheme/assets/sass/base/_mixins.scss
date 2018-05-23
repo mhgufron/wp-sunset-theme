@@ -3,7 +3,7 @@
 */
 
 /*--------------------------------------------------------------
-Mixins
+    Mixins
 --------------------------------------------------------------*/
 @mixin animate ( $attr, $time ) {
     -webkit-transition: $attr, $time ease;
@@ -24,4 +24,9 @@ Mixins
 @keyframes spin {
     from { transform: rotate(360deg); }
     to { transform: rotate(0deg); }
+}
+
+@mixin fullwidth() {
+    width: 100%;
+    height: auto;
 }

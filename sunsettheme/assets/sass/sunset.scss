@@ -9,6 +9,7 @@ Import
 @import "base/mixins";        // Mixins
 @import "base/placeholders";  // Placeholder
 @import "base/fonticon";      // Font Icon
+@import "base/wordpress";     // Default Wordpress Class
 
 /*--------------------------------------------------------------
 1. General
@@ -91,8 +92,8 @@ h1 { font-size: 48px; font-weight: 200;
     }
 }
 
-.entry-meta { font-size: 13px; font-weight: 200; color: $light-grey; margin-bottom: 20px;
-    a { font-weight: 700; color: $light-grey;
+.entry-meta { font-size: 15px; font-weight: 200; color: $light-grey; margin-bottom: 20px;
+    a { font-weight: 500; color: $light-grey;
         &:hover,
         &:focus { color: $dark-grey; }
     }
@@ -112,7 +113,7 @@ h1 { font-size: 48px; font-weight: 200;
 }
 
 .entry-excerpt { margin: 30px 0 16px;
-    p { font-size: 17px; line-height: 1.5em; font-weight: 300; letter-spacing: 0.02em;}
+    p { font-size: 18px; line-height: 1.5em; font-weight: 300; letter-spacing: 0.02em;}
 }
 
 .button-container { margin-bottom: 30px; }
@@ -240,7 +241,7 @@ h1 { font-size: 48px; font-weight: 200;
         &:after {content: '„'; }
         a { color: $light-grey; }
     }
-    .quote-author { color: $lighter-grey-2; font-size: 14px; letter-spacing: 0.06; font-weight: bold; }
+    .quote-author { color: $lighter-grey-2; font-size: 16px; letter-spacing: 0.06; font-weight: 300; }
 }
 
 /*--------------------------------------------------------------
@@ -372,7 +373,25 @@ h1 { font-size: 48px; font-weight: 200;
     animation-timing-function: linear;
 }
 
+/*--------------------------------------------------------------
+15. Single
+--------------------------------------------------------------*/
+.entry-content {
+    margin-top: 40px;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    line-height: 1.7em;
+    font-weight: 300;
 
+    p {
+        margin-bottom: 15px;
+    }
+
+    b,
+    strong {
+        font-weight: 500;
+    }
+}
 
 
 
