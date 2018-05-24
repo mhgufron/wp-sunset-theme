@@ -24,7 +24,8 @@
     </head>
     <body <?php body_class() ?> >
 
-        <div class="sunset-sidebar sidebar-closed">
+        <!-- sidebar-closed -->
+        <div class="sunset-sidebar ">
 
             <div class="sunset-sidebar-container">
 

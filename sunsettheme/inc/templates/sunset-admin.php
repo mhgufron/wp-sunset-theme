@@ -21,9 +21,15 @@ $github = esc_attr( get_option('github_handler') );
         <h1 id="full_name_preview" class="sunset-username"><?php echo $fullName ?></h1>
         <h2 id="description_preview" class="sunset-description"><?php echo $desrciption ?></h2>
         <div class="icon-wrapper">
-            <a id="twitter_preview" href="https://twitter.com/<?php print $twitter; ?>"><i class="fa fa-twitter"></i></a>
-            <a id="facebook_preview" href="https://facebook.com/<?php print $facebook; ?>"><i class="fa fa-facebook"></i></a>
-            <a id="github_preview" href="https://github.com/<?php print $github; ?>"><i class="fa fa-github"></i></a>
+            <?php if ( ! empty( $twitter ) ): ?>
+                <a id="twitter_preview" href="https://twitter.com/<?php print $twitter; ?>" target="_blark"><i class="fa fa-twitter"></i></a>
+            <?php endif; ?>
+            <?php if ( ! empty( $facebook ) ): ?>
+                <a id="facebook_preview" href="https://www.facebook.com/<?php print $facebook; ?>" target="_blark"><i class="fa fa-facebook"></i></a>
+            <?php endif; ?>
+            <?php if ( ! empty( $github ) ): ?>
+                <a id="github_preview" href="https://github.com/<?php print $github; ?>" target="_blark"><i class="fa fa-github"></i></a>
+            <?php endif; ?>
         </div>
     </div>
 </div>
