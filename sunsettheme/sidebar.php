@@ -12,6 +12,8 @@ if ( ! is_active_sidebar( 'sunset-sidebar' ) ) {
 }
 ?>
 
-<aside id="secondary" class="wiget-area">
-    
+<aside id="secondary" class="widget-area">
+
+    <?php dynamic_sidebar( 'sunset-sidebar' ); ?>
+
 </aside>

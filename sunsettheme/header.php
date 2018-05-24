@@ -24,20 +24,33 @@
     </head>
     <body <?php body_class() ?> >
 
-        <div class="sunset-sidebar">
+        <div class="sunset-sidebar sidebar-closed">
 
-            <div class="sidebar-scroll">
+            <div class="sunset-sidebar-container">
 
-                <?php get_sidebar(); ?>
+                <a href="" class="js-toggleSidebar sidebar-close">
+                    <i class="sunset-icon icon-close"></i>
+                </a>
 
-            </div>
+                <div class="sidebar-scroll">
 
-        </div>
+                    <?php get_sidebar(); ?>
+
+                </div><!-- .sidebar-scroll -->
+
+            </div><!-- .sunset-sidebar-container -->
+
+        </div><!-- .sunset-sidebar -->
+
         <div class="container-fluid">
 
             <div class="row">
 
                 <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
+
+                    <a href="" class="js-toggleSidebar sidebar-open">
+                        <i class="sunset-icon icon-menu"></i>
+                    </a>
 
                     <div class="header-content table">
                         <div class="table-cell">

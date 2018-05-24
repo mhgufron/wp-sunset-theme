@@ -14,13 +14,19 @@ get_header();?>
     <main id="main" class="site-main" role="main">
 
         <header class="sunset-page-header">
+            <div class="row">
 
-            <?php the_title( '<h1 class="page-title">', '</h1>'); ?>
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
 
-            <p><?php esc_html_e( get_post_custom_values('sunset-subheader', get_the_ID())[0], 'sunsettheme' ); ?></p>
+                    <?php the_title( '<h1 class="page-title">', '</h1>'); ?>
 
+                    <p><?php esc_html_e( get_post_custom_values('sunset-subheader', get_the_ID())[0], 'sunsettheme' ); ?></p>
+
+                </div>
+
+            </div><!-- .row -->
         </header>
-    
+
         <div class="container">
             <div class="row">
 

@@ -125,7 +125,7 @@ jQuery(document).ready( function($) {
     function revealPost() {
 
         $('[data-toggle="tooltip"]').tooltip();
-        $('[data-toggle="popover"]').popover();     
+        $('[data-toggle="popover"]').popover();
 
         var posts   = $('article:not(.reveal)');
         var i       = 0;
@@ -162,6 +162,13 @@ jQuery(document).ready( function($) {
 		return ( ( el_bottom - el_height*0.25 > scroll_pos ) && ( el_top < ( scroll_pos+0.5*window_height ) ) );
 
 	}
+
+    /* Sidebar functions */
+    $(document).on('click', '.js-toggleSidebar', function (e) {
+        e.preventDefault();
+        $('.sunset-sidebar').toggleClass('sidebar-closed');
+    });
+
 
 } )
 

@@ -12,7 +12,6 @@
         Theme Support
     ========================================================
 */
-
 $options = get_option( 'post_formats' );
 $formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
 $output = array();
@@ -282,6 +281,13 @@ function sunset_subheader_meta_box_save( $post_id ){
     if( isset( $_POST['sunset-subheader'] ) )
         update_post_meta( $post_id, 'sunset-subheader', esc_attr( $_POST['sunset-subheader'], $allowed ) );
 }
+
+
+
+
+
+
+
 
 
 
