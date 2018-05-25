@@ -63,6 +63,17 @@ function sunset_sidebar_init()
             'after_title'   => '</h2>'
         )
     );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Sunset Sidebar Template Right', 'sunsettheme' ),
+            'id'            => 'sunset-sidebar-template',
+            'description'   => 'Dynamic Right Sidebar Page Template',
+            'before_widget' => '<section id="%1$s" class="sunset-widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="sunset-widget-title">',
+            'after_title'   => '</h2>'
+        )
+    );
 }
 add_action( 'widgets_init', 'sunset_sidebar_init' );
 

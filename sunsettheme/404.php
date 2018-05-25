@@ -6,7 +6,7 @@
 
             <div class="container">
 
-                <div class="sunset-error-404 text-center">
+                <div class="sunset-content-404 text-center">
 
                     <header class="page-header">
                         <h1 class="page-title">404</h1>
@@ -25,24 +25,28 @@
 
                     </div><!-- .page-content -->
 
-                    <div class="foot">
-                        <div class="page-footer">
-                            <div class="sunset-navbar-footer">
-                                <?php wp_nav_menu( array(
-                                    'theme_location'    => 'footer',
-                                    'container'         => false,
-                                    'menu_class'        => 'nav navbar-nav navbar-center sunset-menu-footer',
-                                    'walker'            => new Sunset_Walker_Nav_Primary()
-                                ) ); ?>
-                            </div>
-                            <hr>
-                            <p class="copyright-404 text-center">Copyright © 2018 Sunset by Muhammad Gufron</p>
-                        </div>
-                    </div>
-
-                </div><!-- .error-404 -->
+                </div><!-- .sunset-content-404 -->
 
             </div>
+
+            <div class="sunset-footer-404">
+
+                <div class="col-xs-12">
+
+                    <?php wp_nav_menu( array(
+                        'theme_location'    => 'footer',
+                        'container'         => false,
+                        'menu_class'        => 'nav navbar-nav navbar-center sunset-menu-footer',
+                        'walker'            => new Sunset_Walker_Nav_Primary()
+                    ) ); ?>
+                </div>
+                <div class="col-xs-12">
+
+                    <p class="copyright-404 text-center">Copyright © 2018 Sunset by Muhammad Gufron</p>
+
+                </div>
+
+            </div><!-- .sunset-footer-404 -->
 
         </main>
     </div><!-- #primary -->

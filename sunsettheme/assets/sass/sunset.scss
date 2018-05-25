@@ -11,6 +11,8 @@ Import
 @import "base/fonticon";      // Font Icon
 @import "base/wordpress";     // Default Wordpress Class
 
+@import "admin/admin";        // Admin css
+
 /*--------------------------------------------------------------
 1. General
 --------------------------------------------------------------*/
@@ -672,6 +674,15 @@ blockquote {
         @include transform( TranslateX( 100% ) );
     }
 
+    a {
+        color: #bababa;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+        }
+    }
+
 }
 
 .sunset-sidebar-container {
@@ -703,17 +714,6 @@ blockquote {
     font-size: 10px;
 }
 
-/* admin declare clases */
-h1.sunset-username,
-h2.sunset-description { font-weight: 100; color: #fff; }
-h1.sunset-username { font-size: 24px; margin: 0 0 10px; }
-h2.sunset-description { font-size: 13px; margin: 0 0 20px; }
-
-.image-container { display:block; width: 100%; overflow: hidden; text-align: center; }
-.profile-picture { display: block; width: 122px; height: 122px; overflow: hidden; border-radius: 50%; margin: 20px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
-.icon-wrapper a { color: #f1f1f1; padding: 0.2em; font-size: 1.2em;}
-
-
 /*--------------------------------------------------------------
 20. 404 Page Not Found
 --------------------------------------------------------------*/
@@ -729,9 +729,10 @@ h2.sunset-description { font-size: 13px; margin: 0 0 20px; }
     position: absolute;
 }
 
-.sunset-error-404 {
-    display: relative;
+.sunset-content-404 {
     color: $white-color;
+    min-height: 75vh;
+    height: 100%;
 
     .page-header {
         border-bottom: none;
@@ -744,35 +745,74 @@ h2.sunset-description { font-size: 13px; margin: 0 0 20px; }
             font-weight: 200;
         }
     }
-    .foot {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+}
+
+.sunset-footer-404 {
+    color: $white-color;
+    background-color: rgba(51, 51, 51, 0.5);
+    min-height: 20vh;
+    height: auto;
+    .col-xs-12 .navbar-nav {
+        padding: 29px 0 25px;
         width: 100%;
-        background-color: rgba(51, 51, 51, 0.7);
-        padding: 6px 0;
-        z-index: 1;
-
-        .page-footer {
-            position: relative;
-            clear: both;
-            .sunset-navbar-footer  .navbar-nav {
-                width: 100%;
-                text-align: center;
-                margin: 10px 0;
-                > li {
-                    float: none;
-                    display: inline-block;
-                }
-            }
+        text-align: center;
+        > li {
+            float: none;
+            display: inline-block;
         }
-
     }
 }
 
+/*--------------------------------------------------------------
+21. Widget Section
+--------------------------------------------------------------*/
+.sunset-widget {
+    margin: 20px 0 40px;
+    padding: 0 20px;
+}
+
+h2.sunset-widget-title {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    background-color: $dark-grey-1;
+    padding: 8px;
+    border-radius: 20px;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+}
+
+/*--- Tags Cloud Widget ---*/
+.tagcloud {
+    text-align: center;
+
+    a {
+        display: inline-block;
+        background: #7d7d7d;
+        padding: 2px 9px;
+        border-radius: 10px;
+        color: #eee;
+    }
+
+}
 
 
+/*--------------------------------------------------------------
+22. Page Template Right Sidebar
+--------------------------------------------------------------*/
+.sunset-page-template-sidebar {
+    margin-top: 45px;
+}
+
+.sunset-page {
+    .entry-content {
+        h1,h2,h3,h4,h5,h6 {
+            margin-bottom: 13px;
+        }
+    }
+}
 
 
 
