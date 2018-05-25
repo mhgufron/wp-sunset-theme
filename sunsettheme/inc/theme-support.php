@@ -282,7 +282,19 @@ function sunset_subheader_meta_box_save( $post_id ){
         update_post_meta( $post_id, 'sunset-subheader', esc_attr( $_POST['sunset-subheader'], $allowed ) );
 }
 
+/**
+ * Modify the page part of the document title for the search page
+ */
+add_filter( 'document_title_parts', function( $title ) use( &$page, &$paged )
+{
+    if ( is_search() && ( $paged >= 2 || $page >= 2 ) && ! is_404() )
+        $title['page'] = sprintf(
+            esc_html__( 'This is %s page', 'my-theme-domain' ),
+            max( $paged, $page )
+        );
 
+    return $title;
+} );
 
 
 

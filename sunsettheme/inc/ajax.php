@@ -16,6 +16,7 @@ function sunset_load_more()
     $paged      = $_POST['page'] + 1;
     $prev       = $_POST['prev'];
     $archive    = $_POST['archive'];
+    $searchd    = $_POST['tester'];
 
     if ( $prev == 1 && $_POST['page'] != 1 ) {
         $paged = $_POST['page'] - 1;
@@ -26,6 +27,7 @@ function sunset_load_more()
         'post_status'   => 'publish',
         'paged'         => $paged
     );
+
 
     if ( $archive != '0' ) {
 
@@ -66,15 +68,27 @@ function sunset_load_more()
     } else {
         $page_trail = '/';
     }
+
+    if ( $searchd != '0' ) {
+        $args['s'] = $searchd;
+        $searchd = '?s=' . $searchd;
+    } else {
+        $searchd = '';
+    }
+
     $query  = new WP_Query( $args );
 
     if ( $query->have_posts() ) :
 
-        echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '/" >';
+        echo '<div class="page-limit" data-page="' . $page_trail . 'page/' . $paged . '/' . $searchd . '" >';
 
         while ( $query->have_posts() ): $query->the_post();
 
-            get_template_part( 'template-parts/content', get_post_format() );
+            if ( ! is_search() ) {
+                get_template_part( 'template-parts/content', get_post_format() );
+            } else {
+                get_template_part( 'template-parts/content', 'search' );
+            }
 
         endwhile;
 

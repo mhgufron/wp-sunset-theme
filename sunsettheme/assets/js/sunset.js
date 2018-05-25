@@ -56,16 +56,21 @@ jQuery(document).ready( function($) {
         var ajaxUrl = that.data('url');
         var prev    = that.data('prev');
         var archive = that.data('archive');
+        var searchd = that.data('searchd');
 
         if ( typeof prev === 'undefined' ) {
             prev    = 0;
         }
 
         if ( typeof archive === 'undefined' ) {
-            archive    = 0;
+            archive = 0;
         }
 
-        console.log(prev);
+        if ( typeof searchd === 'undefined' ) {
+            searchd = 0;
+        }
+
+        console.log(searchd);
 
         that.addClass('loading').find('.text').slideUp(320);
         that.find('.sunset-icon').addClass('spin');
@@ -79,6 +84,7 @@ jQuery(document).ready( function($) {
                 page    : page,
                 prev    : prev,
                 archive : archive,
+                tester  : searchd,
                 action  : 'sunset_load_more'
 
             },
