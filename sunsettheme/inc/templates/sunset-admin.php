@@ -11,7 +11,7 @@ $twitter = esc_attr( get_option('twitter_handler') );
 $facebook = esc_attr( get_option('facebook_handler') );
 $github = esc_attr( get_option('github_handler') );
  ?>
-
+ 
 <div class="sunset-sidebar-preview">
     <div class="sunset-sidebar">
         <div class="image-container">

@@ -24,58 +24,64 @@
     </head>
     <body <?php body_class() ?> >
 
-        <!-- sidebar-closed -->
-        <div class="sunset-sidebar ">
+        <?php if ( !is_404() ): ?>
 
-            <div class="sunset-sidebar-container">
+            <div id="wrap-header">
+                <!-- sidebar-closed -->
+                <div class="sunset-sidebar ">
 
-                <a href="" class="js-toggleSidebar sidebar-close">
-                    <i class="sunset-icon icon-close"></i>
-                </a>
+                    <div class="sunset-sidebar-container">
 
-                <div class="sidebar-scroll">
+                        <a href="" class="js-toggleSidebar sidebar-close">
+                            <i class="sunset-icon icon-close"></i>
+                        </a>
 
-                    <?php get_sidebar(); ?>
+                        <div class="sidebar-scroll">
 
-                </div><!-- .sidebar-scroll -->
+                            <?php get_sidebar(); ?>
 
-            </div><!-- .sunset-sidebar-container -->
+                        </div><!-- .sidebar-scroll -->
 
-        </div><!-- .sunset-sidebar -->
+                    </div><!-- .sunset-sidebar-container -->
 
-        <div class="container-fluid">
+                </div><!-- .sunset-sidebar -->
 
-            <div class="row">
+                <div class="container-fluid">
 
-                <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
+                    <div class="row">
 
-                    <a href="" class="js-toggleSidebar sidebar-open">
-                        <i class="sunset-icon icon-menu"></i>
-                    </a>
+                        <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
 
-                    <div class="header-content table">
-                        <div class="table-cell">
-                            <h1 class="site-title sunset-icon">
-                                <i class="icon-logo"></i>
-                                <span class="hide"><?php bloginfo( 'name' ); ?></span>
-                            </h1>
-                            <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-                        </div><!-- .table-cell -->
-                    </div><!-- .header-content -->
+                            <a href="" class="js-toggleSidebar sidebar-open">
+                                <i class="sunset-icon icon-menu"></i>
+                            </a>
 
-                    <div class="nav-container">
-                        <nav class="navbar navbar-sunset">
-                            <?php wp_nav_menu( array(
-                                'theme_location'    => 'primary',
-                                'container'         => false,
-                                'menu_class'        => 'nav navbar-nav',
-                                'walker'            => new Sunset_Walker_Nav_Primary()
-                            ) ); ?>
-                        </nav>
-                    </div><!-- .nav-container -->
+                            <div class="header-content table">
+                                <div class="table-cell">
+                                    <h1 class="site-title sunset-icon">
+                                        <i class="icon-logo"></i>
+                                        <span class="hide"><?php bloginfo( 'name' ); ?></span>
+                                    </h1>
+                                    <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                                </div><!-- .table-cell -->
+                            </div><!-- .header-content -->
 
-                </header><!-- .header-container -->
+                            <div class="nav-container">
+                                <nav class="navbar navbar-sunset">
+                                    <?php wp_nav_menu( array(
+                                        'theme_location'    => 'primary',
+                                        'container'         => false,
+                                        'menu_class'        => 'nav navbar-nav',
+                                        'walker'            => new Sunset_Walker_Nav_Primary()
+                                    ) ); ?>
+                                </nav>
+                            </div><!-- .nav-container -->
 
-            </div><!-- .row -->
+                        </header><!-- .header-container -->
 
-        </div><!-- .container-fluid -->
+                    </div><!-- .row -->
+
+                </div><!-- .container-fluid -->
+            </div><!-- #wrop-header -->
+
+        <?php endif; ?>
