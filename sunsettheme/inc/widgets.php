@@ -88,7 +88,7 @@ function sunset_tag_cloud_font_change( $args )
 
     return $args;
 }
-
+add_filter( 'widget_tag_cloud_args', 'sunset_tag_cloud_font_change' ); 
 
 
 
