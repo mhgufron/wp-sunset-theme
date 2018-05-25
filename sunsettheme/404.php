@@ -25,6 +25,21 @@
 
                     </div><!-- .page-content -->
 
+                    <div class="foot">
+                        <div class="page-footer">
+                            <div class="sunset-navbar-footer">
+                                <?php wp_nav_menu( array(
+                                    'theme_location'    => 'footer',
+                                    'container'         => false,
+                                    'menu_class'        => 'nav navbar-nav navbar-center sunset-menu-footer',
+                                    'walker'            => new Sunset_Walker_Nav_Primary()
+                                ) ); ?>
+                            </div>
+                            <hr>
+                            <p class="copyright-404 text-center">Copyright © 2018 Sunset by Muhammad Gufron</p>
+                        </div>
+                    </div>
+
                 </div><!-- .error-404 -->
 
             </div>

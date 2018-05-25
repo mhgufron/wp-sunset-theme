@@ -84,11 +84,7 @@ function sunset_load_more()
 
         while ( $query->have_posts() ): $query->the_post();
 
-            if ( ! is_search() ) {
-                get_template_part( 'template-parts/content', get_post_format() );
-            } else {
-                get_template_part( 'template-parts/content', 'search' );
-            }
+            get_template_part( 'template-parts/content', get_post_format() );
 
         endwhile;
 
