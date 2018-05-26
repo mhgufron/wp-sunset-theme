@@ -121,6 +121,98 @@ function sunset_save_post_views( $postID ) {
 }
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
+/*
+    ========================================================
+        Popular Post Widget
+    ========================================================
+*/
+class Sunset_Popular_Post_Widget extends WP_Widget
+{
+    // Setup the widget name, description, etc...
+    function __construct()
+    {
+        $widget_ops = array(
+            'classname' => 'sunset-popular-posts-widget',
+            'description'   => 'Popular Posts Widget',
+        );
+        parent::__construct( 'sunset_popular_posts', 'Sunset Popular Post', $widget_ops );
+    }
+
+    // Back-end display of widget
+    public function form( $instance )
+    {
+        $title  = ( !empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'Popular Posts' );
+        $tot    = ( !empty( $instance[ 'tot' ] ) ? absint( $instance[ 'tot' ] ) : 4 );
+
+        $output = '<p>';
+        $output .= '<label for="' . esc_attr( $this->get_field_id( 'title' ) ) . '">Title:</label>';
+        $output .= '<input type="text" class="widefat" id="' . esc_attr( $this->get_field_id( 'title' ) ) . '" name="' . esc_attr( $this->get_field_name( 'title' ) ) . '" value="' . esc_attr( $title ) . '"';
+        $output .= '</p>';
+
+        $output .= '<p>';
+        $output .= '<label for="' . esc_attr( $this->get_field_id( 'tot' ) ) . '">Number of Post:</label>';
+        $output .= '<input type="number" class="widefat" id="' . esc_attr( $this->get_field_id( 'tot' ) ) . '" name="' . esc_attr( $this->get_field_name( 'tot' ) ) . '" value="' . esc_attr( $tot ) . '"';
+        $output .= '</p>';
+
+        echo $output;
+    }
+
+    // Update Widget
+    public function update( $new_instance, $old_instance ) {
+
+		$instance = array();
+		$instance[ 'title' ] = ( !empty( $new_instance[ 'title' ] ) ? strip_tags( $new_instance[ 'title' ] ) : '' );
+		$instance[ 'tot' ] = ( !empty( $new_instance[ 'tot' ] ) ? absint( strip_tags( $new_instance[ 'tot' ] ) ) : 0 );
+
+		return $instance;
+
+	}
+
+    // Front-end display of widget
+    public function widget( $args, $instance )
+    {
+        $tot = absint( $instance[ 'tot' ] );
+
+        $posts_args = array(
+            'post_type'         => 'post',
+            'posts_per_page'    => $tot,
+            'meta_key'          => 'sunset_post_views',
+            'orderby'           => 'meta_value_num',
+            'order'             => 'DESC'
+        );
+
+        $posts_query = new WP_Query( $posts_args );
+
+        echo $args[ 'before_widget' ];
+
+        if ( !empty( $instance[ 'title' ] ) ) :
+
+            echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ) . $args[ 'after_title' ];
+
+        endif;
+
+        if( $posts_query->have_posts() ):
+
+			echo '<ul>';
+
+				while( $posts_query->have_posts() ): $posts_query->the_post();
+
+					echo '<li>' . get_the_title() . '</li>';
+
+				endwhile;
+
+			echo '</ul>';
+
+		endif;
+
+
+        echo $args[ 'after_widget' ];
+    }
+}
+add_action( 'widgets_init', function() {
+    register_widget( 'Sunset_Popular_Post_Widget' );
+} );
+
 
 
 
