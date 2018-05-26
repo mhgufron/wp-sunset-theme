@@ -39,6 +39,8 @@
     </footer>
 <?php endif; ?>
 
+</div><!-- .scroll-area -->
+
 <?php wp_footer(); ?>
 </body>
 </html>

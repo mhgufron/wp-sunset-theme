@@ -24,6 +24,8 @@
     </head>
     <body <?php body_class() ?> >
 
+        <div class="scroll-area">
+
         <?php if ( !is_404() ): ?>
 
             <div id="wrap-header">
@@ -36,7 +38,7 @@
                             <i class="sunset-icon icon-close"></i>
                         </a>
 
-                        <div class="sidebar-scroll">
+                        <div class="sidebar-scroll scroll-area-sm">
 
                             <?php get_sidebar(); ?>
 
@@ -84,6 +86,6 @@
                     </div><!-- .row -->
 
                 </div><!-- .container-fluid -->
-            </div><!-- #wrop-header -->
+            </div><!-- #wrap-header -->
 
         <?php endif; ?>

@@ -101,6 +101,27 @@ function sunset_list_categories_output_change( $links ) {
 }
 add_filter( 'wp_list_categories', 'sunset_list_categories_output_change' );
 
+/*
+    ========================================================
+        Save Post View
+    ========================================================
+*/
+function sunset_save_post_views( $postID ) {
+
+	$metaKey   = 'sunset_post_views';
+	$views     = get_post_meta( $postID, $metaKey, true );
+
+	$count     = ( empty( $views ) ? 0 : $views );
+	$count++;
+
+	update_post_meta( $postID, $metaKey, $count );
+
+    return $views;
+
+}
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
+
 
 
 
