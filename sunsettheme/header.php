@@ -28,7 +28,7 @@
 
             <div id="wrap-header">
                 <!-- sidebar-closed -->
-                <div class="sunset-sidebar ">
+                <div class="sunset-sidebar sidebar-closed">
 
                     <div class="sunset-sidebar-container">
 
@@ -45,6 +45,8 @@
                     </div><!-- .sunset-sidebar-container -->
 
                 </div><!-- .sunset-sidebar -->
+
+                <div class="sidebar-overlay"></div>
 
                 <div class="container-fluid">
 
