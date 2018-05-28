@@ -105,7 +105,7 @@ function sunset_posted_meta()
     return '<span class="posted-on">Posted <a href="' . esc_url( get_permalink() ) . '">' . $posted_on . '</a> ago</span> / <span class="posted-in">' . $output . '</span>';
 }
 
-function sunset_posted_footer()
+function sunset_get_post_comment()
 {
     $comments_num = get_comments_number();
     if ( comments_open() ) {
@@ -122,8 +122,12 @@ function sunset_posted_footer()
     } else {
         $comments = __( 'Comments are Closed' );
     }
+    return $comments;
+}
 
-    return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">' . get_the_tag_list('<div class="tags-list"><i class="sunset-icon icon-tag"></i> ', ' ', '</div>' ) . '</div><div class="col-xs-12 col-sm-6 text-right">' . $comments . '</div></div></div>';
+function sunset_posted_footer()
+{
+    return '<div class="post-footer-container"><div class="row"><div class="col-xs-12 col-sm-6">' . get_the_tag_list('<div class="tags-list"><i class="sunset-icon icon-tag"></i> ', ' ', '</div>' ) . '</div><div class="col-xs-12 col-sm-6 text-right">' . sunset_get_post_comment() . '</div></div></div>';
 }
 
 function sunset_get_attachment( $num = 1 )

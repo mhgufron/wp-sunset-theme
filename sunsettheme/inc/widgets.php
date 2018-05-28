@@ -200,7 +200,10 @@ class Sunset_Popular_Post_Widget extends WP_Widget
                     $post_format = ( empty( get_post_format() ) ? 'standard' : get_post_format() );
                     echo '<div class="media" >';
                     echo '<div class="media-left"><img class="media-object" src="' . get_template_directory_uri() . '/assets/img/post-' . esc_attr( $post_format, 'sunsettheme' ) . '.png" alt="' . get_the_title() . '" /></div>';
-                    echo '<div class="media-body">' . get_the_title() . '</div>';
+                    echo '<div class="media-body">';
+                    echo '<a href="' . get_the_permalink() . '" title="' . get_the_title() . '">' . get_the_title() . '</a>';
+                    echo '<div class="row"><div class="col-xs-12">'. sunset_get_post_comment() .'</div></div>';
+                    echo '</div>';
                     echo '</div>';
 
                 endwhile;
