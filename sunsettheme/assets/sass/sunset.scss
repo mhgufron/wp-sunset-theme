@@ -95,12 +95,13 @@ h1,h2,h3,h4,h5,h6 {
             }
             &:after { content: ''; position: absolute; display: block; left: 15px; right: 15px; bottom: 8px; height: 2px; background: #fff; @include animate( all, 320ms); opacity: 0; @include transform( translateY(+10px) ); }
         }
-        ul.dropdown-menu { height: 50px; border: 0; border-radius: 0; background: rgba(0,0,0,0.75);
+        ul.dropdown-menu { height: auto; border: 0; border-radius: 0; background: rgba(0,0,0,0.75);
             li { display: block;
-                a {
+                a { padding: 15px 20px;
                     &:hover,
                     &:focus,
-                    &:visited { background: rgba(0,0,0,0)!important; color: #fff; }
+                    &:visited { background: rgba(0,0,0,0.6)!important; color: #fff; }
+                    &:after { content: ''; position: absolute; display: none; }
                 }
             }
         }

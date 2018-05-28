@@ -1,6 +1,6 @@
 <?php
 /**
- * Page
+ * Default Page Template
  *
  * @package sunsettheme
  * @since 1.0
@@ -13,42 +13,21 @@ get_header();?>
 
     <main id="main" class="site-main" role="main">
 
-        <header class="sunset-page-header">
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-
-                    <?php the_title( '<h1 class="page-title">', '</h1>'); ?>
-
-                    <p><?php esc_html_e( get_post_custom_values('sunset-subheader', get_the_ID())[0], 'sunsettheme' ); ?></p>
-
-                </div>
-
-            </div><!-- .row -->
-        </header>
-
         <div class="container">
-            <div class="row">
 
-                <div class="col-xs-12 col-md-10 col-lg-8 col-lg-offset-2 col-md-offset-1">
+            <?php
 
-                    <?php
+                if ( have_posts() ) :
 
-                        if ( have_posts() ) :
+                    while ( have_posts() ): the_post();
 
-                            while ( have_posts() ): the_post();
+                        get_template_part( 'template-parts/content', 'page' );
 
-                                get_template_part( 'template-parts/page' );
+                    endwhile;
 
-                            endwhile;
+                endif;
 
-                        endif;
-
-                     ?>
-
-                </div><!-- .col-xs-12 -->
-
-            </div><!-- .row -->
+             ?>
 
         </div><!-- .container -->
 

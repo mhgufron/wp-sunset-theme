@@ -7,9 +7,15 @@
  * @version 1.0
  */
 
+/*
+    ========================================================
+        Tooltip Shortcode
+    ========================================================
+*/
+
 function sunset_tooltip( $atts, $content = null )
 {
-    // [tooltip placement="top" title="This is the title"]This is The Content[/tooltip]
+    // Use this code: [tooltip placement="top" title="This is the title"]This is The Content[/tooltip]
     // Get the attributes
     $atts = shortcode_atts(
         array (
@@ -26,13 +32,18 @@ function sunset_tooltip( $atts, $content = null )
 
     return '<span class="sunset-tooltip" data-toggle="tooltip" data-placement="' . $atts['placement'] . '" title="' . $title . '">' . $content . '</span>';
 }
-
 add_shortcode( 'tooltip', 'sunset_tooltip' );
+
+/*
+    ========================================================
+        Popover Shortcode
+    ========================================================
+*/
 
 function sunset_popover( $atts, $text = null )
 {
 
-    // [popover placement="top" title="Popover title" content="Popover Content" trigger="click"]This is The Content[/popover]
+    // Use this code: [popover placement="top" title="Popover title" content="Popover Content" trigger="click"]This is The Content[/popover]
     // Get the attributes
     $atts = shortcode_atts(
         array (
@@ -51,5 +62,49 @@ function sunset_popover( $atts, $text = null )
 
     return '<a class="sunset-popover" data-toggle="popover" data-trigger="' . $atts['trigger'] . '" data-placement="' . $atts['placement'] . '" title="' . $atts['title'] . '" data-content="' . $data_content . '">' . $text . '</a>';
 }
-
 add_shortcode( 'popover', 'sunset_popover' );
+
+/*
+    ========================================================
+        Contact Form shortcode
+    ========================================================
+*/
+function sunset_contact_form( $atts, $content = null )
+{
+    // Use this code: [contact_form]
+    // Get the attributes
+    $atts = shortcode_atts(
+        array (),
+        $atts,
+        'contact_form'
+    );
+
+    // Return HTTML
+
+    ob_start();
+    require_once 'templates/contact-form.php';
+    return ob_get_clean();
+}
+add_shortcode( 'contact_form', 'sunset_contact_form' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* My Subcomment */

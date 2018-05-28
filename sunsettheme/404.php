@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <div id="primary" <?php post_class( 'sunset-404 background-image' ); ?> style="background-image: url(<?php echo get_template_directory_uri() . '/images/404.jpeg'; ?>)">
+    <div id="primary" <?php post_class( 'sunset-404 background-image' ); ?> style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/404.jpeg'; ?>)">
         <div class="overlay-404"></div>
         <main id="main" class="site-main" role="main">
 
