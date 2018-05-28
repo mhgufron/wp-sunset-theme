@@ -93,10 +93,10 @@ add_filter( 'widget_tag_cloud_args', 'sunset_tag_cloud_font_change' );
 
 function sunset_list_categories_output_change( $links ) {
 
-	$links = str_replace('</a> (', '</a> <span>', $links);
-	$links = str_replace(')', '</span>', $links);
+    $links = str_replace('</a> (', '</a> <span>', $links);
+    $links = str_replace(')', '</span>', $links);
 
-	return $links;
+    return $links;
 
 }
 add_filter( 'wp_list_categories', 'sunset_list_categories_output_change' );
@@ -108,13 +108,13 @@ add_filter( 'wp_list_categories', 'sunset_list_categories_output_change' );
 */
 function sunset_save_post_views( $postID ) {
 
-	$metaKey   = 'sunset_post_views';
-	$views     = get_post_meta( $postID, $metaKey, true );
+    $metaKey   = 'sunset_post_views';
+    $views     = get_post_meta( $postID, $metaKey, true );
 
-	$count     = ( empty( $views ) ? 0 : $views );
-	$count++;
+    $count     = ( empty( $views ) ? 0 : $views );
+    $count++;
 
-	update_post_meta( $postID, $metaKey, $count );
+    update_post_meta( $postID, $metaKey, $count );
 
     return $views;
 
@@ -160,13 +160,13 @@ class Sunset_Popular_Post_Widget extends WP_Widget
     // Update Widget
     public function update( $new_instance, $old_instance ) {
 
-		$instance = array();
-		$instance[ 'title' ] = ( !empty( $new_instance[ 'title' ] ) ? strip_tags( $new_instance[ 'title' ] ) : '' );
-		$instance[ 'tot' ] = ( !empty( $new_instance[ 'tot' ] ) ? absint( strip_tags( $new_instance[ 'tot' ] ) ) : 0 );
+        $instance = array();
+        $instance[ 'title' ] = ( !empty( $new_instance[ 'title' ] ) ? strip_tags( $new_instance[ 'title' ] ) : '' );
+        $instance[ 'tot' ] = ( !empty( $new_instance[ 'tot' ] ) ? absint( strip_tags( $new_instance[ 'tot' ] ) ) : 0 );
 
-		return $instance;
+        return $instance;
 
-	}
+    }
 
     // Front-end display of widget
     public function widget( $args, $instance )
@@ -193,20 +193,25 @@ class Sunset_Popular_Post_Widget extends WP_Widget
 
         if( $posts_query->have_posts() ):
 
-			echo '<ul>';
+            // echo '<ul>';
 
-				while( $posts_query->have_posts() ): $posts_query->the_post();
+                while( $posts_query->have_posts() ): $posts_query->the_post();
 
-					echo '<li>' . get_the_title() . '</li>';
+                    $post_format = ( empty( get_post_format() ) ? 'standard' : get_post_format() );
+                    echo '<div class="media" >';
+                    echo '<div class="media-left"><img class="media-object" src="' . get_template_directory_uri() . '/assets/img/post-' . esc_attr( $post_format, 'sunsettheme' ) . '.png" alt="' . get_the_title() . '" /></div>';
+                    echo '<div class="media-body">' . get_the_title() . '</div>';
+                    echo '</div>';
 
-				endwhile;
+                endwhile;
 
-			echo '</ul>';
+            // echo '</ul>';
 
-		endif;
+        endif;
 
-
+        wp_reset_postdata();
         echo $args[ 'after_widget' ];
+
     }
 }
 add_action( 'widgets_init', function() {

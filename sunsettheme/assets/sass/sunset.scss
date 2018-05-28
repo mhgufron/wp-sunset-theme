@@ -296,6 +296,10 @@ h1 { font-size: 48px; font-weight: 200;
                 margin: 0 auto;
                 line-height: 1em;
                 padding-top: 10px;
+
+                &:hover,&:focus {
+                    background-color: $orange-hover;
+                }
             }
         }
     }
@@ -733,6 +737,7 @@ blockquote {
     position: fixed;
     z-index: 3;
     display: none;
+    // cursor: e-resize;
 }
 
 .sunset-sidebar {
