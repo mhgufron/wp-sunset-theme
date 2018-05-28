@@ -54,7 +54,7 @@
 
                     <div class="row">
 
-                        <header class="header-container text-center background-image" style="background-image: url(<?php header_image(); ?>)">
+                        <header class="header-container text-center background-image" style="background-image: url(<?php ( ! header_image() ? get_template_directory_uri() . '/assets/img/bg-head.png' : header_image() ); ?>)">
 
                             <a href="" class="js-toggleSidebar sidebar-open">
                                 <i class="sunset-icon icon-menu"></i>

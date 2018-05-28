@@ -177,6 +177,44 @@ jQuery(document).ready( function($) {
         $('.sidebar-overlay').fadeToggle(320);
     });
 
+    /* Contact form submision */
+    $('#sunsetContactForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var form = $(this),
+            name    = form.find('#name').val(),
+            email   = form.find('#email').val(),
+            message = form.find('#message').val(),
+            ajaxUrl = form.data('url') ;
+
+        if ( name === '' || email === '' || message === '' ) {
+            console.log( 'Required inputs are empty' );
+            return
+        }
+
+        $.ajax({
+
+            url     : ajaxUrl,
+            type    : 'post',
+            data    : {
+
+                name    : name,
+                email   : email,
+                message : message,
+                action  : 'sunset_save_user_contact_form'
+
+            },
+            error   : function( response ) {
+                console.log(response);
+                console.log('error');
+            },
+            success : function( response ) {
+
+            }
+
+        })
+
+    } );
 
 } )
 

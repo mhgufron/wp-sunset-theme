@@ -1,4 +1,4 @@
-<form action="#" method="post">
+<form id="sunsetContactForm" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
 
     <div class="form-group">
         <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required="required">
