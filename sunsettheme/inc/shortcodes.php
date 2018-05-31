@@ -82,7 +82,7 @@ function sunset_contact_form( $atts, $content = null )
     // Return HTTML
 
     ob_start(); /* output buffering */
-    require_once 'templates/contact-form.php';
+    require_once 'templates/sunset-template-contact-form.php';
     return ob_get_clean();
 }
 add_shortcode( 'contact_form', 'sunset_contact_form' );

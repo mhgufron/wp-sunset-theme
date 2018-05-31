@@ -209,7 +209,11 @@ jQuery(document).ready( function($) {
                 console.log('error');
             },
             success : function( response ) {
-
+                if ( response == 0 ) {
+                    console.log( 'Unable to save your message, Please try again leter' );
+                } else {
+                    console.log( 'Message saved, thank you' );
+                }
             }
 
         })
